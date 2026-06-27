@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เที่ยวเมืองน่าไป</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-wrapper">
+      <h1 class="logo">เที่ยวเมืองน่าไป [สงขลา]</h1>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home">หน้าแรก</a></li>
+          <li><a href="#places">สถานที่ท่องเที่ยว</a></li>
+          <!-- <li><a href="#highlights">จุดเด่น</a></li> -->
+          <li><a href="#contact">ติดต่อ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-subtitle">จังหวัดท่องเที่ยวแนะนำ</p>
+          <h2>ค้นพบเสน่ห์ของเมืองท่องเที่ยวที่คุณไม่ควรพลาด</h2>
+          <p>
+            สัมผัสธรรมชาติ วัฒนธรรม และอาหารท้องถิ่นที่น่าสนใจ
+            พร้อมสถานที่ยอดนิยมที่เหมาะสำหรับการพักผ่อนในวันหยุด
+          </p>
+          <a href="#places" class="btn">ดูรายละเอียด</a>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+            alt="ภาพสถานที่ท่องเที่ยว"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Places Section -->
+    <section class="places section" id="places">
+      <div class="container">
+        <div class="section-title">
+          <h2>สถานที่ท่องเที่ยวแนะนำ</h2>
+          <p>ตัวอย่างสถานที่ท่องเที่ยวที่น่าสนใจในจังหวัด</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80"
+              alt="ภูเขาและธรรมชาติ"
+            />
+            <div class="card-body">
+              <h3>อุทยานธรรมชาติ</h3>
+              <p>
+                เหมาะสำหรับผู้ที่ชอบบรรยากาศธรรมชาติ อากาศดี
+                และกิจกรรมเดินชมวิว
+              </p>
+              <a href="#" class="btn btn-secondary">อ่านเพิ่มเติม</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80"
+              alt="วัดและวัฒนธรรม"
+            />
+            <div class="card-body">
+              <h3>วัดเก่าแก่ประจำเมือง</h3>
+              <p>
+                ศึกษาประวัติศาสตร์ ศิลปวัฒนธรรม และสถาปัตยกรรม
+                ที่ทรงคุณค่า
+              </p>
+              <a href="#" class="btn btn-secondary">อ่านเพิ่มเติม</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
+              alt="ตลาดชุมชน"
+            />
+            <div class="card-body">
+              <h3>ตลาดชุมชน</h3>
+              <p>
+                แหล่งรวมอาหารพื้นเมือง ของฝาก และสินค้าท้องถิ่น
+                เหมาะสำหรับนักท่องเที่ยว
+              </p>
+              <a href="#" class="btn btn-secondary">อ่านเพิ่มเติม</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <!-- <section class="highlights section" id="highlights">
+      <div class="container">
+        <div class="section-title">
+          <h2>จุดเด่นของจังหวัด</h2>
+          <p>ข้อมูลเพิ่มเติมที่ช่วยให้นักท่องเที่ยวตัดสินใจเดินทางได้ง่ายขึ้น</p>
+        </div>
+
+        <div class="highlight-grid">
+          <div class="highlight-box">
+            <h3>ธรรมชาติสวยงาม</h3>
+            <p>มีทั้งภูเขา น้ำตก และพื้นที่สีเขียว เหมาะสำหรับพักผ่อน</p>
+          </div>
+          <div class="highlight-box">
+            <h3>อาหารท้องถิ่นอร่อย</h3>
+            <p>มีเมนูพื้นเมืองที่เป็นเอกลักษณ์และหาทานได้ง่าย</p>
+          </div>
+          <div class="highlight-box">
+            <h3>เดินทางสะดวก</h3>
+            <p>สามารถเดินทางได้ทั้งรถยนต์ส่วนตัวและรถโดยสารสาธารณะ</p>
+          </div>
+          <div class="highlight-box">
+            <h3>เหมาะกับทุกวัย</h3>
+            <p>มีทั้งแหล่งท่องเที่ยวเชิงธรรมชาติ วัฒนธรรม และกิจกรรมครอบครัว</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-wrapper">
+      <p>&copy; 2026 เที่ยวเมืองน่าไป [สุขสวัสดิ์ แซ่ลิ่่ม]. All Rights Reserved.</p>
+      <div class="footer-contact">
+        <span>Email: travel@example.com</span>
+        <span>Facebook: เที่ยวเมืองน่าไป [Songkhla]</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

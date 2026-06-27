@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suksawat – Demo Layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* เพิ่มเติม CSS เฉพาะหน้านี้ ถ้าจำเป็น */
+  </style>
+
+</head>
+
+<body>
+  <!-- 
+      สอนการใช้ google fonts
+      การสร้างตาราง
+      การสร้างฟอร์ม
+      การจัดวางเลย์เอาต์ด้วย CSS Grid และ Flexbox
+      responsive design เบื้องต้น
+    -->
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="header-inner">
+        <div>
+          <div class="site-title">Aoaaekung</div>
+          <div class="site-tagline">รวมเนื้อหาเกี่ยวกับเทคโนโลยี AI น่าสนใจ</div>
+        </div>
+        <div class="social-icons">
+          <a href="#">f</a>
+          <a href="#">t</a>
+          <a href="#">in</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav">
+    <div class="wrapper">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">ธุรกิจ</a></li>
+        <li><a href="#">Transformation</a></li>
+        <li><a href="#">Developer</a></li>
+        <li><a href="#">เรื่องหน้าไม่</a></li>
+        <li><a href="#">Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- hero Content Section -->
+  <div class="hero-content">
+    <section class="wrapper">
+      <h2 class="hero-title">🚀 เนื้อหาแนะนำสำหรับคุณ</h2>
+      <div class="hero-grid">
+
+        <article class="hero-item">
+          <h3>💡 เทคนิค CSS Grid ที่ทุกคนควรรู้</h3>
+          <p>เรียนรู้วิธีใช้ CSS Grid Layout เพื่อสร้างเลย์เอาต์ที่ซับซ้อนและยืดหยุ่น พร้อมตัวอย่างการใช้งานจริง
+            และเทคนิคขั้นสูงที่จะทำให้เว็บไซต์ของคุณโดดเด่น</p>
+          <a href="#" class="read-more">อ่านเพิ่มเติม</a>
+        </article>
+
+        <article class="hero-item">
+          <h3>🎨 การออกแบบ UI/UX ที่ใช้งานง่าย</h3>
+          <p>หลักการออกแบบส่วนติดต่อผู้ใช้ที่ดี เริ่มตั้งแต่การเลือกสีที่เหมาะสม การจัดวาง Typography
+            และการสร้างประสบการณ์ผู้ใช้ที่น่าประทับใจ</p>
+          <a href="#" class="read-more">เรียนรู้เพิ่ม</a>
+        </article>
+
+        <article class="hero-item">
+          <h3>⚡ การปรับปรุงประสิทธิภาพเว็บไซต์</h3>
+          <p>เทคนิคการทำให้เว็บไซต์โหลดเร็วขึ้น ตั้งแต่การ optimize รูปภาพ การใช้ CDN การ minify code
+            และการวัดผลประสิทธิภาพด้วยเครื่องมือต่างๆ</p>
+          <a href="#" class="read-more">ดูรายละเอียด</a>
+        </article>
+
+        <article class="hero-item">
+          <h3>🔥 JavaScript ES6+ ที่ควรรู้</h3>
+          <p>ฟีเจอร์ใหม่ๆ ของ JavaScript ที่จะทำให้การเขียนโค้ดของคุณทันสมัยและมีประสิทธิภาพมากขึ้น เช่น Arrow
+            Functions, Async/Await, Destructuring และอื่นๆ</p>
+          <a href="#" class="read-more">เริ่มเรียน</a>
+        </article>
+
+      </div>
+    </section>
+  </div>
+
+
+
+  <!-- PAGE CONTENT -->
+
+  <div class="wrapper">
+    <div class="content-layout">
+
+      <!-- LEFT: POSTS -->
+      <main class="post-list">
+
+        <section class="card">
+          <div class="card-header-line">
+            CATEGORY ARCHIVES: <strong>RESPONSIVE DESIGN</strong>
+          </div>
+
+          <article>
+            <header class="post-header">
+              <h2 class="post-title">คำสั่ง CSS สำคัญสำหรับการเขียนเว็บ Responsive</h2>
+              <div class="date-circle">
+                <span class="day">30</span>
+                <span>AUG</span>
+              </div>
+            </header>
+
+            <div class="post-image">
+              ภาพตัวอย่างการแสดงผล responsive บนอุปกรณ์ต่างๆ
+            </div>
+
+            <p class="post-excerpt">
+              รวมคำสั่ง CSS ที่จำเป็นสำหรับการสร้างเว็บไซต์ที่รองรับทุกขนาดหน้าจอ เริ่มจาก media queries,
+              flexbox, grid layout และเทคนิคการใช้ viewport units เพื่อให้เว็บของคุณดูดีในทุกอุปกรณ์ …
+            </p>
+            <span>|</span>
+            <a href="#">read more</a>
+
+            <div class="post-footer">
+              <span><strong>Tags:</strong></span>
+              <a href="#">responsive design</a> •
+              <a href="#">media queries</a> •
+              <a href="#">flexbox</a> •
+              <a href="#">CSS grid</a>
+
+            </div>
+          </article>
+        </section>
+
+        <section class="card">
+          <div class="card-header-line">
+            CATEGORY ARCHIVES: <strong>CSS DISPLAY PROPERTY</strong>
+
+          </div>
+
+          <article>
+            <header class="post-header">
+              <h2 class="post-title">เปรียบเทียบ display: block vs inline-block</h2>
+              <div class="date-circle">
+                <span class="day">28</span>
+                <span>AUG</span>
+              </div>
+            </header>
+
+            <p class="table-description">
+              ตารางด้านล่างแสดงความแตกต่างระหว่าง display: block และ display: inline-block
+              เพื่อช่วยให้เข้าใจการเลือกใช้ display property ที่เหมาะสม
+            </p>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">คุณสมบัติ</th>
+                  <th style="width: 37.5%;">display: block</th>
+                  <th style="width: 37.5%;">display: inline-block</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="feature">การจัดเรียงองค์ประกอบ</td>
+                  <td class="neutral">📦 แต่ละตัวอยู่บรรทัดใหม่</td>
+                  <td class="pro">✅ เรียงต่อกันในบรรทัดเดียว</td>
+                </tr>
+                <tr>
+                  <td class="feature">ความกว้างเริ่มต้น</td>
+                  <td class="con">❌ กินพื้นที่เต็มความกว้าง (100%)</td>
+                  <td class="pro">✅ ตามเนื้อหาภายใน (auto)</td>
+                </tr>
+                <tr>
+                  <td class="feature">การกำหนด width และ height</td>
+                  <td class="pro">✅ กำหนดได้ทั้ง width และ height</td>
+                  <td class="pro">✅ กำหนดได้ทั้ง width และ height</td>
+                </tr>
+                <tr>
+                  <td class="feature">margin และ padding</td>
+                  <td class="pro">✅ ใช้ได้ครบทุกทิศทาง</td>
+                  <td class="pro">✅ ใช้ได้ครบทุกทิศทาง</td>
+                </tr>
+                <tr>
+                  <td class="feature">vertical-align</td>
+                  <td class="con">❌ ไม่มีผลกับ block element</td>
+                  <td class="pro">✅ สามารถใช้ได้ (top, middle, bottom)</td>
+                </tr>
+                <tr>
+                  <td class="feature">ช่องว่างระหว่างองค์ประกอบ</td>
+                  <td class="neutral">🚫 ไม่มีปัญหาช่องว่าง</td>
+                  <td class="con">❌ มีช่องว่างจาก whitespace ใน HTML</td>
+                </tr>
+                <tr>
+                  <td class="feature">การใช้งานที่เหมาะสม</td>
+                  <td class="pro">📄 div, section, header, footer</td>
+                  <td class="pro">🎯 navigation menu, button groups</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="table-description">
+              <strong>สรุป:</strong> display: block เหมาะสำหรับโครงสร้างหลักของหน้าเว็บ
+              ส่วน display: inline-block เหมาะสำหรับการสร้างเมนู หรือองค์ประกอบที่ต้องเรียงต่อกัน
+            </div>
+
+            <div class="post-footer">
+              <span><strong>Tags:</strong></span>
+              <a href="#">CSS</a> •
+              <a href="#">display property</a>
+              <span>|</span>
+              <a href="#">Leave a comment</a>
+            </div>
+          </article>
+        </section>
+
+
+        <!-- Contact Form Section -->
+        <section class="card">
+          <h2 class="contact-title">📞 ติดต่อเรา</h2>
+          <div class="contact-form-main">
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">ชื่อ *</label>
+                  <input type="text" name="firstName" class="form-input" placeholder="ชื่อจริง" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">นามสกุล *</label>
+                  <input type="text" name="lastName" class="form-input" placeholder="นามสกุล" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">อีเมล *</label>
+                  <input type="email" name="email" class="form-input" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">เบอร์โทรศัพท์</label>
+                  <input type="tel" name="phone" class="form-input" placeholder="080-123-4567">
+                </div>
+              </div>
+
+              <div class="form-row full-width">
+                <div class="form-group">
+                  <label class="form-label">บริษัท/องค์กร</label>
+                  <input type="text" name="company" class="form-input" placeholder="ชื่อบริษัทของคุณ">
+                </div>
+              </div>
+
+              <div class="form-row full-width">
+                <div class="form-group">
+                  <label class="form-label">หัวข้อที่สนใจ *</label>
+                  <select name="subject" class="form-select" required>
+                    <option value="">เลือกหัวข้อ</option>
+                    <option value="web-development">การพัฒนาเว็บไซต์</option>
+                    <option value="ai-consultation">ปรึกษาเรื่อง AI</option>
+                    <option value="startup-advice">คำแนะนำ Startup</option>
+                    <option value="collaboration">ความร่วมมือทางธุรกิจ</option>
+                    <option value="other">อื่นๆ</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row full-width">
+                <div class="form-group">
+                  <label class="form-label">รายละเอียด *</label>
+                  <textarea name="message" class="form-input form-textarea"
+                    placeholder="โปรดอธิบายรายละเอียดที่ต้องการปรึกษา..." required></textarea>
+                </div>
+              </div>
+
+              <div class="form-row full-width">
+                <div class="form-group">
+                  <label class="form-label">ความสนใจเพิ่มเติม</label>
+                  <div class="form-checkbox-group">
+                    <div class="checkbox-item">
+                      <input type="checkbox" name="interests[]" value="newsletter">
+                      <span>ต้องการรับข่าวสารทาง email</span>
+                    </div>
+                    <div class="checkbox-item">
+                      <input type="checkbox" name="interests[]" value="consultation">
+                      <span>สนใจบริการปรึกษา</span>
+                    </div>
+                    <div class="checkbox-item">
+                      <input type="checkbox" name="interests[]" value="partnership">
+                      <span>สนใจความร่วมมือ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="form-button">📨 ส่งข้อความ</button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- RIGHT: SIDEBAR -->
+      <aside class="sidebar">
+        <div class="widget">
+          <div class="widget-title">สวัสดีครับ ยินดีต้อนรับ</div>
+          <p>
+            ผมชื่อ Suksawat เขียนบล็อกเกี่ยวกับ Startup การตลาด การเขียนโปรแกรม
+            และเทคโนโลยี AI สำหรับ SME และ Startup
+          </p>
+          <div class="author-photo">รูปผู้เขียน</div>
+          <a href="#" class="btn-facebook">กดติดตามใน Facebook</a>
+        </div>
+
+        <div class="widget">
+          <div class="newsletter-form">
+            <div class="form-title">📧 รับข่าวสารใหม่</div>
+            <form id="newsletterForm">
+              <div class="form-group">
+                <label class="form-label">ชื่อของคุณ</label>
+                <input type="text" name="name" class="form-input" placeholder="ใส่ชื่อของคุณ" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">อีเมล</label>
+                <input type="email" name="email" class="form-input" placeholder="example@email.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">สนใจเนื้อหาด้านไหน</label>
+                <select name="category" class="form-select">
+                  <option value="all">ทุกหัวข้อ</option>
+                  <option value="ai">AI & เทคโนโลยี</option>
+                  <option value="startup">Startup & ธุรกิจ</option>
+                  <option value="programming">การเขียนโปรแกรม</option>
+                  <option value="marketing">การตลาดออนไลน์</option>
+                </select>
+              </div>
+              <button type="submit" class="form-button">🚀 สมัครเลย!</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="contact-form">
+            <div class="form-title">💬 ติดต่อด่วน</div>
+            <form id="quickContactForm">
+              <div class="form-group">
+                <label class="form-label">ชื่อ</label>
+                <input type="text" name="name" class="form-input" placeholder="ชื่อของคุณ" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">เรื่องที่ต้องการติดต่อ</label>
+                <select name="topic" class="form-select" required>
+                  <option value="">เลือกเรื่องที่ติดต่อ</option>
+                  <option value="question">❓ มีคำถาม</option>
+                  <option value="collaboration">🤝 ความร่วมมือ</option>
+                  <option value="consultation">💡 ปรึกษาโปรเจ็กต์</option>
+                  <option value="feedback">💭 ให้ความเห็น</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">ข้อความสั้นๆ</label>
+                <textarea name="message" class="form-input form-textarea" placeholder="อธิบายสั้นๆ..."
+                  required></textarea>
+              </div>
+              <button type="submit" class="form-button">📤 ส่งเลย</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="widget-title">Suksawat</div>
+          <div class="fb-box">
+            กล่อง Facebook Like (ตัวอย่าง)<br />
+            203,779 คนถูกใจ
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="widget-title">Sponsor</div>
+          <div class="ad-box">
+            พื้นที่โฆษณา / วิดีโอ
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrapper">
+      <div class="footer-inner">
+        © 2025 Suksawat — All rights reserved.<br>
+        Designed for educational/demo purposes • <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

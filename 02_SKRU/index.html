@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SKRU Header + Hero</title>
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+  <div class="header-wrap">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark"><img src="images/Npru-logo.png" alt=""></div>
+        <div class="brand-text">
+          <div class="abbr">NPRU</div>
+          <div class="sub">NAKHON PATHOM RAJABHAT UNIVERSITY</div>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="nav" aria-label="Main Navigation">
+        <a class="home" href="#" title="Home">🏠</a>
+
+        <div class="dd">
+          <button class="dd-toggle" type="button">
+            เกี่ยวกับมหาวิทยาลัย <span class="caret"></span>
+          </button>
+          <div class="dd-menu" role="menu">
+            <a href="#">ประวัติความเป็นมา</a>
+            <a href="#">วิสัยทัศน์/พันธกิจ</a>
+            <a href="#">โครงสร้างองค์กร</a>
+          </div>
+        </div>
+
+        <div class="dd">
+          <button class="dd-toggle" type="button">
+            การศึกษา <span class="caret"></span>
+          </button>
+          <div class="dd-menu" role="menu">
+            <a href="#">หลักสูตร</a>
+            <a href="#">ปฏิทินการศึกษา</a>
+            <a href="#">งานทะเบียน</a>
+          </div>
+        </div>
+
+        <div class="dd">
+          <button class="dd-toggle" type="button">
+            ระบบสารสนเทศ <span class="caret"></span>
+          </button>
+          <div class="dd-menu" role="menu">
+            <a href="#">ระบบนักศึกษา</a>
+            <a href="#">ระบบบุคลากร</a>
+            <a href="#">ระบบอีเมล</a>
+          </div>
+        </div>
+
+        <div class="dd">
+          <button class="dd-toggle" type="button">
+            หน่วยงาน <span class="caret"></span>
+          </button>
+          <div class="dd-menu" role="menu">
+            <a href="#">คณะ/วิทยาลัย</a>
+            <a href="#">สำนัก/กอง</a>
+            <a href="#">ศูนย์บริการ</a>
+          </div>
+        </div>
+
+        <div class="dd">
+          <button class="dd-toggle" type="button">
+            เผยแพร่ข้อมูล <span class="caret"></span>
+          </button>
+          <div class="dd-menu" role="menu">
+            <a href="#">ข่าวประชาสัมพันธ์</a>
+            <a href="#">ประกาศ</a>
+            <a href="#">ดาวน์โหลดเอกสาร</a>
+          </div>
+        </div>
+
+        <a href="#">ติดต่อเรา</a>
+      </nav>
+
+      <!-- Mobile burger -->
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="right-slot"></div>
+    </header>
+
+    <!-- Mobile Panel -->
+    <div class="mobile-panel" id="mobilePanel">
+      <div class="mobile-inner">
+
+        <a class="m-link" href="#">🏠 หน้าแรก</a>
+
+        <div class="m-item">
+          <button class="m-toggle" type="button">
+            เกี่ยวกับมหาวิทยาลัย <span class="m-caret"></span>
+          </button>
+          <div class="m-sub">
+            <a href="#">ประวัติความเป็นมา</a>
+            <a href="#">วิสัยทัศน์/พันธกิจ</a>
+            <a href="#">โครงสร้างองค์กร</a>
+          </div>
+        </div>
+
+        <div class="m-item">
+          <button class="m-toggle" type="button">
+            การศึกษา <span class="m-caret"></span>
+          </button>
+          <div class="m-sub">
+            <a href="#">หลักสูตร</a>
+            <a href="#">ปฏิทินการศึกษา</a>
+            <a href="#">งานทะเบียน</a>
+          </div>
+        </div>
+
+        <div class="m-item">
+          <button class="m-toggle" type="button">
+            ระบบสารสนเทศ <span class="m-caret"></span>
+          </button>
+          <div class="m-sub">
+            <a href="#">ระบบนักศึกษา</a>
+            <a href="#">ระบบบุคลากร</a>
+            <a href="#">ระบบอีเมล</a>
+          </div>
+        </div>
+
+        <div class="m-item">
+          <button class="m-toggle" type="button">
+            หน่วยงาน <span class="m-caret"></span>
+          </button>
+          <div class="m-sub">
+            <a href="#">คณะ/วิทยาลัย</a>
+            <a href="#">สำนัก/กอง</a>
+            <a href="#">ศูนย์บริการ</a>
+          </div>
+        </div>
+
+        <div class="m-item">
+          <button class="m-toggle" type="button">
+            เผยแพร่ข้อมูล <span class="m-caret"></span>
+          </button>
+          <div class="m-sub">
+            <a href="#">ข่าวประชาสัมพันธ์</a>
+            <a href="#">ประกาศ</a>
+            <a href="#">ดาวน์โหลดเอกสาร</a>
+          </div>
+        </div>
+
+        <a class="m-link" href="#">ติดต่อเรา</a>
+      </div>
+    </div>
+  </div>
+
+    <!-- Slider -->
+    <section class="slider">
+        <img id="slide" src="images/slide1.jpg" alt="ข่าวสาร">
+    </section>
+
+
+
+
+    <!-- ===== University Statistics Section ===== -->
+    <section class="uni-stats">
+        <div class="uni-container">
+
+            <header class="uni-title">
+                <h2>มหาวิทยาลัยชั้นนำเพื่อการพัฒนาท้องถิ่นอย่างยั่งยืน</h2>
+                <p class="uni-subtitle">__Nakhon Pathom Rajabhat University__</p>
+            </header>
+
+            <div class="stats-box">
+            <div class="stats-arc"></div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                <div class="stat-value" data-count="7">7</div>
+                <div class="stat-label">คณะ</div>
+                </div>
+
+                <div class="stat-item">
+                <div class="stat-value" data-count="1">0</div>
+                <div class="stat-label">วิทยาลัย</div>
+                </div>
+
+                <div class="stat-item">
+                <div class="stat-value" data-count="66">120</div>
+                <div class="stat-label">หลักสูตร</div>
+                </div>
+
+                <div class="stat-item">
+                <div class="stat-value" data-count="13133">4500</div>
+                <div class="stat-label">นักศึกษา</div>
+                </div>
+            </div>
+
+            <div class="stats-note">-- ข้อมูลปีการศึกษา 2567</div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+<!-- ===== News Section (ต่อจากส่วนก่อนหน้าได้เลย) ===== -->
+    <section class="news-section" id="news">
+        <div class="">
+            <h2 class="news-title">ข่าวสาร</h2>
+
+            <div class="news-grid">
+                <!-- Card 1 -->
+                <article class="news-card">
+                    <div class="news-thumb">
+                        <img src="images/news_02.png" alt="สมัครงาน">
+                    </div>
+                    <div class="news-body">
+                        <h3 class="news-card-title">สมัครงาน</h3>
+                        <p class="news-desc">
+                            ขอเชิญผู้สนใจจากท่าน เข้าร่วมทำงานกับเราในด้านต่างๆ ได้แก่ อาจารย์ผู้สอน เจ้าหน้าที่สายสนับสนุน
+                            และพนักงานบริการ เพื่อสนับสนุนพันธกิจมหาวิทยาลัย
+                        </p>
+                        <a class="news-btn" href="#">ดูเพิ่มเติม <span aria-hidden="true">»</span></a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="news-card">
+                    <div class="news-thumb">
+                        <img src="images/news_03.png" alt="จัดซื้อจัดจ้าง">
+                    </div>
+                    <div class="news-body">
+                        <h3 class="news-card-title">จัดซื้อจัดจ้าง</h3>
+                        <p class="news-desc">
+                            ขอเชิญชวนบริษัท ห้างร้าน องค์กร หรือบุคคลที่สนใจ เข้าร่วมประกวดราคา
+                            ผ่านระบบการจัดซื้อจัดจ้าง โดยวิธีการ e-bidding
+                        </p>
+                        <a class="news-btn is-muted" href="#">ดูเพิ่มเติม <span aria-hidden="true">»</span></a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="news-card">
+                    <div class="news-thumb">
+                        <img src="images/news_04.png" alt="ประกาศมหาวิทยาลัย">
+                    </div>
+                    <div class="news-body">
+                        <h3 class="news-card-title">ประกาศมหาวิทยาลัย</h3>
+                        <p class="news-desc">
+                            ช่องทางสำคัญสำหรับการสื่อสารข้อมูลที่เกี่ยวข้องกับกิจกรรมและการดำเนินงานต่างๆ
+                            ของมหาวิทยาลัยราชภัฏสงขลา
+                        </p>
+                        <a class="news-btn" href="#">ดูเพิ่มเติม <span aria-hidden="true">»</span></a>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="news-card">
+                    <div class="news-thumb">
+                        <img src="images/news_05.png" alt="นโยบาย/แนวปฏิบัติฯ">
+                    </div>
+                    <div class="news-body">
+                        <h3 class="news-card-title">นโยบาย/แนวปฏิบัติฯ</h3>
+                        <p class="news-desc">
+                            มหาวิทยาลัยได้ออกประกาศเกี่ยวกับนโยบาย และแนวปฏิบัติฯ ในด้านต่างๆ
+                            เพื่อให้เป็นไปตามระเบียบและดำเนินงานไปในทิศทางเดียวกัน
+                        </p>
+                        <a class="news-btn" href="#">ดูเพิ่มเติม <span aria-hidden="true">»</span></a>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="news-card">
+                    <div class="news-thumb">
+                        <img src="images/news_02.png" alt="กิจกรรมนักศึกษา">
+                    </div>
+                    <div class="news-body">
+                        <h3 class="news-card-title">กิจกรรมนักศึกษา</h3>
+                        <p class="news-desc">
+                            เสริมสร้างประสบการณ์การเรียนรู้และการพัฒนาตนเองนอกห้องเรียน
+                            เช่น การทำงานเป็นทีม การเป็นผู้นำ และการจัดการเวลา
+                        </p>
+                        <a class="news-btn" href="#">ดูเพิ่มเติม <span aria-hidden="true">»</span></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ===== NPRU ITA Section ===== -->
+    <section class="ita-section" id="ita">
+    <div class="">
+        <h2 class="ita-title">NPRU&nbsp;&nbsp;ITA</h2>
+
+        <div class="ita-grid">
+        <!-- Card 1 -->
+        <article class="ita-card">
+            <div class="ita-thumb">
+            <img src="images/news_04.png" alt="ITA งานประเมิน">
+            </div>
+            <div class="ita-foot">
+            <a class="ita-pill" href="#">
+                ITA&nbsp;&nbsp;NPRU <span aria-hidden="true">»</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="ita-card">
+            <div class="ita-thumb">
+            <img src="images/news_05.png" alt="แนวทางการปฏิบัติตน Do's & Don'ts">
+            </div>
+            <div class="ita-foot">
+            <a class="ita-pill" href="#">
+                แนวทางการปฏิบัติตน <span aria-hidden="true">»</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="ita-card">
+            <div class="ita-thumb">
+            <img src="images/news_02.png" alt="Internal Integrity and Transparency Assessment">
+            </div>
+            <div class="ita-foot">
+            <a class="ita-pill" href="#">
+                IIT&nbsp;&nbsp;2025 <span aria-hidden="true">»</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="ita-card">
+            <div class="ita-thumb">
+            <img src="images/news_03.png" alt="External Integrity and Transparency Assessment">
+            </div>
+            <div class="ita-foot">
+            <a class="ita-pill" href="#">
+                EIT&nbsp;&nbsp;2025 <span aria-hidden="true">»</span>
+            </a>
+            </div>
+        </article>
+        </div>
+    </div>
+    </section>
+
+
+
+<!-- ===== Footer (SKRU style) ===== -->
+    <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+
+        <!-- Left: Address -->
+        <div class="footer-col footer-address">
+        <h3 class="footer-head">มหาวิทยาลัยราชภัฏนครปฐม</h3>
+        <p>80 ถนนมาลัยแมน ตำบลนครปฐม<br>อำเภอเมืองนครปฐม จังหวัดนครปฐม รหัสไปรษณีย์ 73000</p>
+        <p>Phone: 0 3410 9300</p>
+        <p>Fax: 0 3426 1048</p>
+        <p>Email: saraban@npru.ac.th</p>
+        </div>
+
+        <!-- Middle: Social + Browser -->
+        <div class="footer-col footer-mid">
+        <h3 class="footer-head">Social&nbsp;&nbsp;Media</h3>
+
+        <div class="social-row" aria-label="Social media">
+            <a class="social-ic" href="#" aria-label="Facebook">
+            <!-- facebook -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12.07C22 6.49 17.52 2 11.94 2S2 6.49 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.84c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56v1.88h2.76l-.44 2.91h-2.32V22c4.78-.75 8.44-4.91 8.44-9.93Z"/>
+            </svg>
+            </a>
+
+            <a class="social-ic" href="#" aria-label="Twitter/X">
+            <!-- x -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.9 2H22l-6.8 7.77L23 22h-6.2l-4.86-6.58L6.1 22H3l7.29-8.33L1 2h6.36l4.39 5.98L18.9 2Zm-1.09 18h1.72L6.43 3.92H4.6L17.81 20Z"/>
+            </svg>
+            </a>
+
+            <a class="social-ic" href="#" aria-label="TikTok">
+            <!-- tiktok -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2h2c.2 1.9 1.3 3.6 3.9 4v2.1c-1.6-.1-2.9-.6-3.9-1.3V15c0 3-2.4 5-5.2 5S6 18 6 15.2c0-2.9 2.2-5.1 5.2-5.1.4 0 .7 0 1 .1v2.4c-.3-.1-.6-.2-1-.2-1.5 0-2.7 1.2-2.7 2.8 0 1.6 1.2 2.7 2.7 2.7 1.7 0 2.9-1 2.9-3.2V2Z"/>
+            </svg>
+            </a>
+
+            <a class="social-ic" href="#" aria-label="YouTube">
+            <!-- youtube -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21.6 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-.9C14.9 3.8 12 3.8 12 3.8h0s-2.9 0-6.4.2c-.4 0-1.4 0-2.3.9-.7.7-.9 2.3-.9 2.3S2 9 2 10.8v2.4c0 1.8.2 3.6.2 3.6s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 6.3.2 6.3.2s2.9 0 6.4-.2c.4 0 1.4 0 2.3-.9.7-.7.9-2.3.9-2.3s.2-1.8.2-3.6v-2.4c0-1.8-.2-3.6-.2-3.6ZM10 14.8V8.8l6 3-6 3Z"/>
+            </svg>
+            </a>
+
+            <a class="social-ic" href="#" aria-label="Instagram">
+            <!-- instagram -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2ZM12 10a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm5.6-2.3a.9.9 0 1 1-.9-.9.9.9 0 0 1 .9.9Z"/>
+            </svg>
+            </a>
+        </div>
+
+        <h3 class="footer-head" style="margin-top:18px;">Support&nbsp;&nbsp;Browser</h3>
+        <div class="browser-row">
+            IE9 , IE10 , Chrome , FireFox
+        </div>
+        </div>
+
+        <!-- Right: big watermark -->
+        <div class="footer-col footer-logo" aria-hidden="true">
+        <div class="footer-watermark">NPRU</div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <div class="copyright">
+                © 2026 Nakhon Pathom Rajabhat University. ALL Rights Reserved.
+            </div>
+
+        </div>
+    </div>
+    </footer>
+
+
+  <script src="js/jscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Inline-block to Flex Workshop</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* ===============================
+       ส่วนที่ 1 : inline-block (เดิม)
+       =============================== */
+    .container-inline {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 40px;
+      border-radius: 8px;
+    }
+
+    .inline-box {
+      display: inline-block;
+      width: 150px;
+      height: 80px;
+      background-color: lightblue;
+      xmargin: 10px;
+      text-align: center;
+      line-height: 80px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* ===============================
+       ส่วนที่ 2 : flex (ใหม่)
+       =============================== */
+    .container-flex {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+
+      /* ⭐ ใช้ flex แทน inline-block */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      xgap: 20px;
+      xflex-direction: column;
+    }
+
+    .flex-box {
+      width: 150px;
+      height: 80px;
+      background-color: lightgreen;
+      text-align: center;
+      line-height: 80px;
+      border-radius: 6px;
+      font-weight: bold;
+
+      xflex: 1; /* ⭐ ให้กล่องยืดหยุ่น */
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Workshop: Inline-block → Flex</h1>
+
+  <!-- ===============================
+       ตัวอย่างที่ 1 : inline-block
+       ปัญหาที่อาจเกิดจากการใช้ inline-block คือ ช่องว่าง, การจัดกึ่งกลาง
+       =============================== -->
+  <section class="container-inline">
+    <h2>ตัวอย่างที่ 1: ใช้ inline-block</h2>
+    <p>ปัญหาที่อาจเกิดจากการใช้ inline-block คือ ช่องว่าง, การจัดกึ่งกลาง</p>
+
+    <div class="inline-box">Box 1</div>
+    <div class="inline-box">Box 2</div>
+    <div class="inline-box">Box 3</div>
+  </section>
+
+  <!-- ===============================
+       ตัวอย่างที่ 2 : flex
+       =============================== -->
+  <section class="container-flex">
+    <div class="flex-box">Box A</div>
+    <div class="flex-box">Box B</div>
+    <div class="flex-box">Box C</div>
+  </section>
+
+</body>
+</html>

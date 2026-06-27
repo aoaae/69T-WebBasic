@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suksawat Test</title>
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap'); */
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            /*font-family: 'Kanit', sans-serif;*/
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7e95fa 0%, #764ba2 100%);
+            /* min-height: 100vh; 
+            line-height: 1.0; */
+        }
+        
+        header {
+            background: linear-gradient(135deg, #176B87, #053B50);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        header h3 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation Menu Styles */
+        .nav-menu {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu li:hover {
+            transform: translateY(-8px);
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #176B87;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #B4D4FF, #A0C8FF);
+            box-shadow: 0 4px 15px rgba(180, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            background: linear-gradient(135deg, #FF8A65, #FF7043);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.4);
+        }
+        
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            max-width: 900px;
+            margin: 0 auto 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /*transition: transform 0.3s ease;*/
+            scroll-margin-top: 20px;
+        }
+
+        .info:hover {
+            /*transform: translateY(-5px);*/
+        }
+        
+        .info-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 5px solid #176B87;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .info-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .info-text {
+            background: linear-gradient(135deg, #FF8A65, #FF7043);
+            width: 550px;
+            border-radius: 15px;
+            padding: 20px 30px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 112, 67, 0.3);
+
+            transition: transform 0.3s ease;
+        }
+
+        .info-text:hover {
+            transform: scale(1.05);
+        }
+
+        .info-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .info-text p {
+            font-size: 16px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-text strong {
+            min-width: 170px;
+            font-weight: 600;
+        }
+
+        .info-text a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .info-text a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .grade-box {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+
+
+            max-width: 900px;
+            margin: 0 auto 20px;
+            text-align: center;
+            font-size: 24px;
+            /*scroll-margin-top: 20px;*/
+        }
+        
+        .grade-term {
+            background: linear-gradient(135deg, #B4D4FF, #A0C8FF);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            /*box-shadow: 0 8px 25px rgba(180, 212, 255, 0.4);*/
+            font-weight: 500;
+            
+            /*transition: transform 0.3s ease, box-shadow 0.3s ease;*/
+        }
+
+        .grade-term:hover {
+            /*transform: translateY(-3px);*/
+            box-shadow: 0 12px 30px rgba(255, 180, 253, 0.6);
+        }
+
+        .grade-term b {
+            color: #D24545;
+            font-size: 24px; 
+            font-weight: 700;
+        }
+        
+        .grade-all {
+            background: linear-gradient(135deg, #D24545, #B73E3E);
+            border-radius: 20px;
+            color: white;
+            padding: 25px;
+            font-size: 40px;
+            font-weight: 700;
+            
+            box-shadow: 0 10px 30px rgba(255, 243, 6, 0.4);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            /*transition: transform 0.3s ease;*/
+
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .grade-all:hover {
+            /*transform: scale(1.02);*/
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #176B87, #053B50);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            /*scroll-margin-top: 20px;*/
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .info-text {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .info-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            header h3 {
+                font-size: 2em;
+            }
+
+            .grade-all {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Add some animation */
+    /*    .grade-term, .grade-all {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .grade-term:nth-child(1) { animation-delay: 0.1s; }
+        .grade-term:nth-child(2) { animation-delay: 0.2s; }
+        .grade-term:nth-child(3) { animation-delay: 0.3s; }
+        .grade-all { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    */
+
+        /* Smooth scrolling */
+        html {
+           /* scroll-behavior: smooth; */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h3>📊 รายงานผลเกรด </h3>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#student-info">👨‍🎓 ข้อมูลนักศึกษา</a></li>
+            <li><a href="#grades">📚 ผลการเรียน</a></li>
+            <li><a href="#contact">📞 ติดต่อ</a></li>
+        </ul>
+    </nav>
+ 
+    <section id="student-info" class="info">
+        <div class="info-text">
+            <h2>👨‍🎓 Mr. Lumyai Jai-Dee</h2>
+            <p><strong>📚 รหัสนักศึกษา:</strong> 644230999</p>
+            <p><strong>👤 ชื่อ-นามสกุล:</strong> นายลำไย ใจดี</p>
+            <p><strong>🎓 หมู่เรียน:</strong> 64/38</p>
+            <p><strong>👨‍🏫 อาจารย์ที่ปรึกษา:</strong> อ.สุขสวัสดิ์ แซ่ลิ่ม</p>
+            <p>
+                <strong>🔗 GitHub:</strong> 
+                <a href="https://github.com/aoaae">https://github.com/aoaae</a> 
+            </p>
+        </div>
+        <img src="images/sharp.png" alt="Profile Picture" class="info-image">
+    </section>
+
+    <section id="grades" class="grade-box">
+        <div class="grade-term">📚 ปี 1 เทอม 1 : <b>3.52</b></div>
+        <div class="grade-term">📖 ปี 1 เทอม 2 : <b>3.70</b></div>
+        <div class="grade-term">📝 ปี 2 เทอม 1 : <b>3.32</b></div>
+    </section>
+    <div class="grade-all">🏆 เกรดเฉลี่ยสะสม: 3.60</div>
+
+    <footer id="contact">
+        <p>
+            &copy; 2024 Webmaster by Suksawat Saelim. ID 644230999. <br> 
+            🏫 Nakhon Pathom Rajabhat University
+        </p>
+    </footer>
+</body>
+</html>

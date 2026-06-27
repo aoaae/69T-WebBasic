@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop - Heading</title>
+    <style>
+        /* พื้นหลังทั้งหน้า + ฟอนต์หลัก */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* ครอบเนื้อหาให้กึ่งกลางและไม่กว้างเกินไป */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+
+        /* หัวเรื่องใหญ่สุดของหน้า */
+        h1 {
+            color: #c4005a;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* กล่อง card หลักแต่ละส่วน */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #c4005a;
+        }
+
+        /* เฉพาะ card ของ Module ใช้สีหัว card คนละสี */
+        .card.module-1 {
+            border-top-color: #0074c2;
+        }
+
+        .card.module-2 {
+            border-top-color: #00a884;
+        }
+
+        .card.final {
+            border-top-color: #ff9800;
+        }
+
+        /* style หัวข้อใน card */
+        h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            color: #0074c2;
+            margin-bottom: 4px;
+        }
+
+        h4 {
+            color: #555;
+            margin-left: 16px;
+            margin-bottom: 6px;
+            font-weight: normal;
+        }
+
+        /* รายการย่อยสวยขึ้นหน่อย */
+        ul {
+            margin-top: 4px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
+
+        /* กล่องเล็ก ๆ สำหรับคำอธิบายด้านล่าง */
+        .note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 12px;
+            border-left: 3px solid #e0e0e0;
+            padding-left: 10px;
+        }
+
+        /* ปุ่มกลับหน้า Tutorial หลัก (ถ้ามี index.html) */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ใส่ไอคอนหน้าข้อความ note */
+
+        .note::before {
+            content: "💚";
+        }
+
+
+
+
+
+        /* ทำให้ responsive ดูดีในจอเล็ก */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px auto;
+            }
+            .card {
+                padding: 16px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Workshop: Heading</h1>
+        <p class="subtitle">ฝึกใช้แท็ก &lt;h1&gt; – &lt;h4&gt; เพื่อจัดโครงสร้างหัวข้อของหน้าเว็บ</p>
+
+        <!-- Card 1: Course Overview -->
+        <section class="card">
+            <h2>Course Overview</h2>
+            <h3>What You Will Learn</h3>
+            <ul>
+                <li>Understand heading levels (&lt;h1&gt; – &lt;h6&gt;)</li>
+                <li>Design a clear content hierarchy for a web page</li>
+                <li>Improve readability and structure using headings</li>
+            </ul>
+
+            <h3>Requirements</h3>
+            <ul>
+                <li>Basic knowledge of HTML</li>
+                <li>A simple text editor (VS Code, Notepad++, etc.)</li>
+                <li>Web browser (Chrome, Edge, Firefox)</li>
+            </ul>
+
+            <p class="note">
+                ✏️<b>คำแนะนำ:</b> ให้ลองเปลี่ยนข้อความหัวข้อเป็นภาษาไทย หรือแก้ชื่อหัวข้อให้เข้ากับวิชาที่นักศึกษากำลังเรียนอยู่ได้เลย
+            </p>
+        </section>
+
+        <!-- Card 2: Module 1 -->
+        <section class="card module-1">
+            <h2>Module 1: HTML Basics</h2>
+
+            <h3>Understanding Tags</h3>
+            <h4>Block vs Inline Elements</h4>
+            <ul>
+                <li><b>Block elements</b>: กินพื้นที่เต็มบรรทัด เช่น &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;</li>
+                <li><b>Inline elements</b>: อยู่ในบรรทัด เช่น &lt;span&gt;, &lt;a&gt;, &lt;strong&gt;</li>
+            </ul>
+
+            <h3>Writing Your First HTML Page</h3>
+            <ul>
+                <li>สร้างโครง HTML พื้นฐาน (&lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;)</li>
+                <li>เพิ่ม &lt;h1&gt; เป็นหัวข้อหลักของหน้า</li>
+                <li>ตามด้วย &lt;p&gt; เพื่ออธิบายเนื้อหา</li>
+            </ul>
+
+            <p class="note">
+                ✅ <b>แบบฝึกหัด:</b> ให้ผู้เรียนสร้างไฟล์ <code>my_first_page.html</code> ที่มี &lt;h1&gt; 1 อัน และ &lt;h2&gt;–&lt;h4&gt; อย่างน้อยอย่างละ 1 อัน
+            </p>
+        </section>
+
+        <!-- Card 3: Module 2 -->
+        <section class="card module-2">
+            <h2>Module 2: CSS Fundamentals</h2>
+
+            <h3>CSS Selectors</h3>
+            <ul>
+                <li>Element selector: เช่น <code>h1 { color: red; }</code></li>
+                <li>Class selector: เช่น <code>.card { background: white; }</code></li>
+                <li>ID selector: เช่น <code>#main-title { text-align: center; }</code></li>
+            </ul>
+
+            <h3>Styling Text</h3>
+            <ul>
+                <li>เปลี่ยนสีตัวอักษรด้วย <code>color</code></li>
+                <li>กำหนดฟอนต์ด้วย <code>font-family</code></li>
+                <li>ปรับขนาดด้วย <code>font-size</code></li>
+            </ul>
+
+            <p class="note">
+                🎨 <b>ลองต่อยอด:</b> ให้ผู้เรียนเปลี่ยนสี h1, h2, h3 ให้คนละสี และสังเกตความแตกต่างเวลาอ่าน
+            </p>
+        </section>
+
+
+        <!-- ลิงก์กลับหน้า Tutorial หลัก -->
+        <a class="back-link" href="index.html">&larr; Back to HTML Tutorial</a>
+
+    </div>
+
+</body>
+</html>

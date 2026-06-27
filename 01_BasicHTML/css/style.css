@@ -1,0 +1,532 @@
+    /* CSS Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+
+      /* background image */
+      background-image: url("../images/bg.jpg");
+      /* เปลี่ยนชื่อไฟล์ตามของคุณ */
+      background-repeat: no-repeat;
+      /* ไม่ทำซ้ำ */
+      background-size: cover;
+      /* ครอบคลุมเต็มจอ */
+      background-position: center;
+      /* จัดกึ่งกลาง */
+      background-attachment: fixed;
+      /* ติดกับหน้าจอเวลาเลื่อน */
+
+      /* เผื่อรูปโหลดไม่ได้ */
+      background-color: #cecece;
+    }
+
+    /* ========================container=========================== */
+
+    .container {
+      max-width: 1200px;
+      margin: 220px auto 20px;
+      /* auto ซ้ายขวา กึ่งกลาง */
+      padding: 0 20px;
+    }
+
+
+
+    /* ============================Card============================= */
+    /* Card base */
+    .card {
+      background: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      border-top: 4px solid #c4005a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+
+      xx-overflow: hidden;
+    }
+
+    /* Different module colors */
+      {
+      border-top-color: #0074c2;
+    }
+
+    .card.module-2 {
+      border-top-color: #00a884;
+    }
+
+    .card.module-3 {
+      border-top-color: #ff9800;
+    }
+
+    .card.module-4 {
+      border-top-color: #8e24aa;
+    }
+
+    .card.module-5 {
+      border-top-color: #ff7043;
+    }
+
+    .card.module-6 {
+      border-top-color: #df2f49;
+    }
+
+
+
+    /* background image card -- */
+    .card.bg-card {
+      background-image: url("../images/sky2.png");
+      background-repeat: no-repeat;
+
+      xx-background-size: 220px;
+      xx-background-position: right 10px top 400px;
+
+      background-size: cover;
+      /* ครอบคลุมเต็มจอ */
+      background-position: center;
+      /* จัดกึ่งกลาง */
+    }
+
+    /* ========================================================= */
+
+
+    /* ==pre== */
+    pre {
+      background: #f0f0f0;
+      padding: 12px;
+      border-left: 4px solid #c4005a;
+      font-size: 14px;
+      overflow-x: auto;
+      /* scroll แนวนอนถ้าตัวหนังสือยาวเกิน */
+      border-radius: 8px;
+      margin: 12px 0;
+
+      white-space: pre-wrap;
+      /* wrap lines */
+    }
+
+    /* ==note== */
+    .note {
+      border-left: 4px solid #e0e0e0;
+      padding-left: 12px;
+      color: #666;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .note::before {
+      content: "💡 ";
+    }
+
+    /* ==code== */
+    code {
+      background: #ececec;
+      padding: 2px 4px;
+      border-radius: 4px;
+
+      overflow-wrap: anywhere;
+      /* ควบคุมการตัดคำ/ตัดบรรทัด เมื่อข้อความยาวเกินกล่อง */
+      word-break: break-word;
+      /* ควบคุมการตัดคำ/ตัดบรรทัด เมื่อข้อความยาวเกินกล่อง */
+    }
+
+    /* ==small badge== */
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f3f3ff;
+      color: #4a32c3;
+      margin-left: 8px;
+
+      vertical-align: middle;
+    }
+
+    /* ==========================Images==Card 6================= */
+    /* Images (global safe defaults) */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      xx-display: block;
+    }
+
+    /* ==========================HTML============================= */
+
+    /* TODO 1 : for smooth scroll and offset for fixed header */
+    html {
+      scroll-padding-top: 200px;
+      /* offset for fixed header */
+      scroll-behavior: smooth;
+      /* smooth scroll */
+    }
+
+    /*
+    #section1,#section2, #section3, #section4, #section5,
+    #section6, #section7, #section8 {  
+      scroll-margin-top: 200px; 
+    } 
+*/
+
+    /* ======================Header=========================== */
+
+    header {
+      background-color: #ffffff;
+      padding: 10px;
+      box-shadow: #a8a00033 0px 4px 12px;
+      margin-bottom: 30px;
+
+      display: flex;
+      /* 🔑 */
+      flex-direction: column;
+      /* 🔑 */
+
+      /* align-items: center; */
+      /* 🔑 */
+
+      position: fixed;
+      /* fix top */
+      width: 100%;
+      /* เต็มความกว้าง */
+      top: 0;
+      /* ติดบน */
+      z-index: 1000;
+      /* ให้อยู่บนสุด */
+
+
+      background: linear-gradient(135deg, #e8eaeb, #b2b3b3);
+      overflow: hidden;
+    }
+
+
+
+
+
+    h1 {
+      text-align: center;
+      color: #c4005a;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #000000;
+      margin-bottom: 30px;
+    }
+
+    /* ==========================Nav=========================== */
+
+    .navbar {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      justify-content: space-between;
+      margin: 0 200px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+/* ================================ */
+    .list-menu ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0 20px;
+      padding: 0;
+    }
+
+    .list-menu li {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .list-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    .list-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+/* ================================ */
+
+    .list-topics {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+
+
+      margin: 0;
+      /* 🔑 สำคัญ */
+      padding: 0;
+      /* 🔑 สำคัญ */
+    }
+
+    .list-topics li {
+      /*
+
+      background-color: #c4005a;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: bold;
+
+      */
+      transition: transform 0.3s ease;
+    }
+
+    .list-topics li:hover {
+      /*background-color: #fb6b0b;*/
+
+      transform: translateY(-2px);
+
+    }
+
+    .list-topics a {
+      color: white;
+      text-decoration: none;
+
+
+      font-weight: 500;
+      font-size: 16px;
+      padding: 0px 15px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #B4D4FF, #073e8b);
+      box-shadow: 0 4px 15px rgba(180, 212, 255, 0.3);
+
+      display: block;
+    }
+
+    .list-topics a:hover {
+      background: linear-gradient(135deg, #FF8A65, #b02f07);
+      color: white;
+      box-shadow: 0 6px 20px rgba(255, 112, 67, 0.4);
+    }
+
+
+    /* ==========================Card 1=========================== */
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+
+    /* ==images size== */
+    .img-small {
+      width: 100px;
+      height: auto;
+    }
+
+    /* ==position== */
+    .position {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .position.left {
+      justify-content: flex-start;
+    }
+
+    .position.right {
+      justify-content: flex-end;
+    }
+
+    .position.center {
+      justify-content: center;
+    }
+
+
+    /* ====================Card 2============================= */
+
+    .img-fixed {
+      width: 260px;
+      height: 160px;
+      border: 1px solid black;
+      //object-fit: cover; /* crop nicely */
+    }
+
+
+
+    /* ====================Card 3================================= */
+
+    .obj-fit-image {
+      width: 100%;
+      height: 200px;
+      border: 1px solid black;
+    }
+
+    .obj-fit-image.contain {
+      object-fit: contain;
+    }
+
+    /* เห็นภาพครบ รักษาสัดส่วน (อาจมีขอบว่าง) */
+    .obj-fit-image.fill {
+      object-fit: fill;
+    }
+
+    /* ยืดภาพให้เต็มกล่อง ภาพอาจบิด (สัดส่วนเพี้ยน)*/
+    .obj-fit-image.cover {
+      object-fit: cover;
+    }
+
+    /* ครอปภาพให้เต็มกล่อง รักษาสัดส่วน บางส่วนของภาพจะถูกตัดออก*/
+
+
+    /* ========================Card 4============================= */
+
+
+    /* Image as link hover */
+    .image-link img {
+      transition: 0.3s;
+    }
+
+    .image-link img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ========================Card 5=========================== */
+
+    /* Gallery using grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+
+    @media (max-width: 520px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+
+    .gallery img {
+      height: 120px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+
+
+    /* =========================Card 7========================== */
+
+
+    /* Figure + caption */
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+
+
+    /* =========================back link========================== */
+
+
+    /* Back link */
+    .back-link {
+      display: block;
+
+      /* 
+      width: fit-content; 
+      width: max-content;
+      */
+
+      margin-top: 20px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+
+      background-color: #fb6b0b;
+      border-radius: 10px;
+      padding: 10px 15px;
+      text-align: center;
+
+    }
+
+    .back-link:hover {
+      background-color: #ffffff;
+      color: #fb6b0b;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+
+    
+    /* ======================== */
+    .rotate-light {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rotate-light::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 253, 253, 0.314) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ======================== */
+
+    /* ================================================================= */
+
+
+    /* 2-column cards layout */
+    .xcard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .xcard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ================================================================= */

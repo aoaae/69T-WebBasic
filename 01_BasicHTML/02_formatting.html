@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop - HTML Text Formatting</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #c4005a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Card */
+        .card {
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-top: 4px solid #c4005a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        p, li {
+            font-size: 17px;
+        }
+
+        ul {
+            margin-top: 8px;
+        }
+
+        mark {
+            background-color: #fff59d;
+        }
+
+        code {
+            background: #ececec;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* Note Box */
+        .note {
+            border-left: 4px solid #e0e0e0;
+            padding-left: 12px;
+            color: #666;
+            margin-top: 12px;
+        }
+
+        .note::before {
+            content: "💡 ";
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .text-color {
+            color: #c4005a;
+        }
+
+        .box {
+            border: 2px solid #000;
+            padding: 12px 20px;
+            x-width: fit-content;   /* ให้กรอบพอดีกับเนื้อหา */
+        }
+
+        /* เฉพาะ card ของ Module ใช้สีหัว card คนละสี */
+        .card.module-1 {
+            border-top-color: #0074c2;
+        }
+
+        .card.module-2 {
+            border-top-color: #00a884;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Workshop: HTML Text Formatting</h1>
+        <p class="subtitle">ฝึกใช้แท็กรูปแบบข้อความ (Formatting Tags) เพื่อสร้างเนื้อหาที่อ่านง่ายและเป็นระเบียบ</p>
+
+        <!-- Card 1: Explanation -->
+        <section class="card">
+            <h2>1. สิ่งที่ต้องรู้ก่อนเริ่มทำ Workshop</h2>
+
+            <p>HTML มีแท็กสำหรับจัดรูปแบบข้อความ ทำให้เนื้อหาดูเด่น อ่านง่าย และสื่อความหมายได้ดีขึ้น</p>
+
+            <ul>
+                <li>&lt;b&gt; – <b class="text-color">ตัวหนา (เน้นเฉย ๆ)</b></li>
+                <li>&lt;strong&gt; – <strong class="text-color">ตัวหนาแบบ “สำคัญ” เชิงความหมาย (semantic importance)</strong></li>
+                <li>&lt;i&gt; – <i class="text-color">ตัวเอียง (ใช้กับศัพท์เฉพาะหรือตัวเน้น)</i></li>
+                <li>&lt;em&gt; – <em class="text-color">ตัวเอียงแบบเน้นน้ำเสียง</em></li>
+                <li>&lt;u&gt; – <u class="text-color">ขีดเส้นใต้</u></li>
+                <li>&lt;ins&gt; – <ins class="text-color">ขีดเส้นใต้</ins></li>
+                <li>&lt;mark&gt; – <mark class="text-color">ไฮไลต์ข้อความ</mark></li>
+                <li>&lt;code&gt; – <code class="text-color">แสดงข้อความเป็นรูปแบบโค้ด</code></li>
+                <li>&lt;small&gt; – <small class="text-color">ข้อความขนาดเล็ก</small></li>
+                <li>&lt;del&gt; – <del class="text-color">ข้อความขีดฆ่า</del></li>
+                <li>&lt;s&gt; – <s class="text-color">ข้อความขีดฆ่า</s></li>
+                <li>&lt;sub&gt; – ตัวห้อย เช่น H<sub class="text-color">2</sub>O</li>
+                <li>&lt;sup&gt; – ตัวยก เช่น x<sup class="text-color">2</sup></li>                
+            </ul>
+            <div class="box">
+                <p>แท็กที่ไม่รองรับใน HTML5</p>
+                <ul>
+                    <li>&lt;strike&gt; – <strike class="text-color">not support in HTML5</strike></li>
+                    <li>&lt;big&gt; – <big class="text-color">not support in HTML5</big></li>
+                    <li>&lt;tt&gt; – <tt class="text-color">not support in HTML5</tt></li>
+                </ul>
+            </div>
+
+            <div class="note">
+                นักศึกษาต้องใช้แท็ก formatting อย่างน้อย 5 ชนิดในงานนี้
+            </div>
+        </section>
+        
+        <!-- Card 2: Task -->
+        <section class="card module-1">
+            <h2>2. ภารกิจของสำหรับนักศึกษาต้องทำ</h2>
+            <p>ให้ค้นหาเนื้อหาเกี่ยวกับ <b>“เทคโนโลยีคอมพิวเตอร์สมัยใหม่”</b> โดยต้องมี:</p>
+
+            <ul>
+                <li>หัวข้อ &lt;h1&gt; 1 อัน</li>
+                <li>ย่อหน้า &lt;p&gt; อย่างน้อย 3 ย่อหน้า</li>
+                <li>ใช้แท็ก formatting อย่างน้อย <b>5 ประเภท</b></li>
+                <li>ข้อความไหนมีการจัด formatting ให้ <b>ใส่สีข้อความเป็นสีแดงชมพู</b></li>
+            </ul>
+        </section>
+
+        <!-- Card 3: Example from students -->
+        <section class="card module-2">
+            <h2>บล็อกนี้สำหรับนักศึกษาหาเนื้อหามาใส่เอง</h2>
+            <p>เอาเนื้อหามาใส่ในนี้</p>
+
+        </section>
+
+        <a class="back-link" href="index.html">← Back to HTML Tutorial</a>
+
+    </div>
+
+</body>
+</html>

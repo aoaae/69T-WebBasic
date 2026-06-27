@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Border Light Sweep Button</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #838383;
+    font-family: Arial, sans-serif;
+  }
+
+  .btn-grow {
+    width: 250px;
+    height: 80px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background: #0b0b0b;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+    .btn-grow:hover {
+        text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+        transform: scale(1.01);
+        box-shadow: inset 0px 0px 10px rgb(59, 59, 59);
+    }
+
+  /* ===== ขอบทองคงที่ ===== */
+  .btn-grow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 4px;
+    background: linear-gradient(90deg, #8a5a10, #ffea0c, #8a5a10);
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ===== แสงวิ่ง เฉพาะขอบ ===== */
+  .btn-grow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 50%;
+    height: 100%;
+    transform: rotate(70deg);
+    background-color: #ffffff55;
+    filter: blur(10px);
+    transition: 0.6s ease-in-out;
+
+
+
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+    /* ✅ ให้เห็นตอนวิ่งกลับ: opacity ไม่หายทันที */
+    opacity: 1;
+
+    transition:
+      background-position 700ms ease,
+      opacity 600ms ease 150ms;  /* ค่อยจางหลังจากเริ่มวิ่งกลับนิดนึง */
+
+    pointer-events: none;
+  }
+
+  /* ข้อความ */
+  .btn-grow span {
+    position: relative;
+    z-index: 1;
+    color: #f5d77a;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* ✅ Hover: วิ่งจาก "ขวา -> ซ้าย" และค้างที่ซ้าย */
+  .btn-grow:hover::after {
+    opacity: 1;                 /* โชว์ชัด */
+    background-position: 100% 50%;
+    transition:
+      background-position 700ms ease,
+      opacity 150ms ease;       /* เข้ามาเร็ว */
+  }
+
+  /* ✅ Mouse out: กลับสู่สถานะปกติ (0%) จึงเกิดการวิ่ง "ซ้าย -> ขวา"
+     และเพราะเราหน่วง opacity ไว้ จึงมองเห็นการวิ่งย้อนกลับ */
+</style>
+</head>
+
+<body>
+
+
+  <button class="btn-grow" aria-label="Subscribe">
+    <span>Click Me</span>
+  </button>
+
+  
+
+</body>
+</html>

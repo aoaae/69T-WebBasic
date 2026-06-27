@@ -1,0 +1,361 @@
+<!-- margin - padding -->
+property
+---------------
+m = margin
+p = padding
+
+sides (ตำแหน่ง)
+---------------
+t = top
+b = bottom
+s = start (ซ้ายในภาษา LTR)
+e = end (ขวาในภาษา LTR)
+x = ซ้าย + ขวา
+y = บน + ล่าง
+(ไม่ใส่) = ทุกด้าน
+
+size
+---------------
+0 = 0
+1 = 0.25rem
+2 = 0.5rem
+3 = 1rem
+4 = 1.5rem
+5 = 3rem
+auto = ใช้ได้กับ margin
+
+============================
+mt-3  = margin-top
+mb-3  = margin-bottom
+ms-3  = margin-left
+me-3  = margin-right
+mx-3  = ซ้าย + ขวา
+my-3  = บน + ล่าง
+
+=============================
+pt-3  = padding-top
+pb-3  = padding-bottom
+ps-3  = padding-left
+pe-3  = padding-right
+px-3  = ซ้าย + ขวา
+py-3  = บน + ล่าง
+p-4 = padding รอบกล่อง 
+ 
+==============================
+
+breakpoint
+
+sm
+md
+lg
+xl
+xxl
+
+<div class="mt-1 mt-md-5"></div>
+
+
+
+
+ 
+ <!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+ความหมาย
+navbar = บอกว่า element นี้คือแถบเมนู
+navbar-expand-lg = ถ้าหน้าจอกว้างระดับ lg ขึ้นไป เมนูจะแสดงแนวนอนปกติ แต่ถ้าจอเล็กจะยุบเป็น hamburger
+bg-light = พื้นหลังสีอ่อน
+navbar-dark = ใช้ชุดสีตัวอักษรสำหรับ navbar พื้นเข้ม
+bg-dark = พื้นหลังสีเข้ม
+shadow-sm = เพิ่มเงาเล็กน้อยให้ navbar ดูลอยขึ้น
+
+
+<div class="container-fluid"></div>
+ความหมาย
+•	container-fluid = กว้างเต็มหน้าจอ
+•	container = จำกัดความกว้างและจัดให้อยู่กลางหน้า
+
+
+<a class="navbar-brand" href="#">Navbar</a>
+ความหมาย
+•	navbar-brand = ใช้สำหรับชื่อเว็บไซต์หรือโลโก้
+•	fw-bold = ทำตัวอักษรหนา
+
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+และ
+<div class="collapse navbar-collapse" id="navbarNav">
+ความหมาย
+•	navbar-toggler = ปุ่ม hamburger
+•	data-bs-toggle="collapse" = สั่งให้กดแล้วแสดง/ซ่อนเมนู
+•	data-bs-target="#mainNavbar" = ระบุว่าให้ปุ่มนี้ไปควบคุม element ที่มี id เป็น mainNavbar
+•	aria-controls="mainNavbar" = เพื่อการเข้าถึง บอกว่าปุ่มนี้ควบคุมส่วนใด
+•	aria-expanded="false" = เริ่มต้นยังไม่ขยาย
+•	aria-label="Toggle navigation" = ข้อความสำหรับ screen reader
+
+
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
+ความหมาย
+•	navbar-nav = กลุ่มรายการเมนูของ navbar
+•	ms-auto = ดันเมนูไปด้านขวาอัตโนมัติ
+o	ms ย่อมาจาก margin-start
+•	mb-2 = margin-bottom 2 หน่วย ใช้ตอนจอเล็กให้เมนูไม่ติดกันเกินไป
+•	mb-lg-0 = ถ้าจอใหญ่ระดับ lg ขึ้นไป ให้ margin-bottom เป็น 0
+
+
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">หน้าหลัก</a>
+</li>
+
+ความหมาย
+•	nav-item = รายการแต่ละตัวในเมนู
+•	nav-link = ลิงก์ภายในเมนู
+•	active = เมนูนี้คือหน้าปัจจุบัน
+•	aria-current="page" = ช่วยเรื่อง accessibility ว่าหน้านี้คือหน้าปัจจุบัน
+
+
+
+ <!-- Hero Section -->
+•	hero-section = class ที่ผู้พัฒนาเขียนเพิ่มเอง ใช้กำหนดรูปแบบพิเศษของส่วน Hero เช่น สีพื้นหลัง ระยะห่าง และสีตัวอักษร
+
+•	container = กล่องกลางของ Bootstrap ใช้จำกัดความกว้างของเนื้อหาและจัดให้อยู่กลางหน้า
+
+•	row = แถวของระบบ Grid ใน Bootstrap ใช้สำหรับครอบคอลัมน์
+
+•	align-items-center = จัดเนื้อหาในแถวให้อยู่กึ่งกลางในแนวตั้ง
+
+•	g-4 = กำหนดระยะห่างระหว่างคอลัมน์และองค์ประกอบภายใน Grid ระดับ 4
+
+•	col-lg-6 = คอลัมน์ที่มีขนาด 6 ส่วนจาก 12 ส่วนเมื่อหน้าจออยู่ระดับใหญ่ lg ขึ้นไป หรือก็คือครึ่งหน้าจอ
+
+•	display-5 = รูปแบบหัวข้อขนาดใหญ่ของ Bootstrap ใช้ทำให้ข้อความเด่น
+
+•	lead = รูปแบบข้อความนำหรือข้อความอธิบายที่เด่นกว่าข้อความปกติ
+
+•	btn = คลาสพื้นฐานสำหรับทำปุ่มใน Bootstrap
+
+•	btn-light = ปุ่มพื้นสีอ่อน
+
+•	btn-outline-light = ปุ่มแบบโปร่งใสที่มีเส้นขอบสีอ่อน
+
+•	btn-lg = ปุ่มขนาดใหญ่
+
+•	me-2 = กำหนดระยะห่างด้านท้ายของ element ระดับ 2 มักใช้เว้นช่องระหว่างปุ่ม
+
+•	card = กล่องเนื้อหาแบบการ์ดของ Bootstrap
+
+•	shadow-lg = เพิ่มเงาขนาดใหญ่ให้ element
+
+•	border-0 = ลบเส้นขอบของ element ออก
+
+•	card-body = พื้นที่เนื้อหาหลักภายในการ์ด
+
+•	p-4 = กำหนด padding ทุกด้านระดับ 4
+
+•	card-title = รูปแบบหัวข้อภายในการ์ด
+
+•	text-dark = กำหนดสีข้อความเป็นสีเข้ม
+
+•	card-text = รูปแบบข้อความเนื้อหาภายในการ์ด
+
+•	text-muted = กำหนดสีข้อความให้ดูจางลงหรือเป็นข้อความรอง
+
+•	list-group = กลุ่มรายการแบบ list ของ Bootstrap
+
+•	list-group-flush = ทำให้ list group แนบกับ card อย่างเรียบง่าย ลดขอบและช่องว่างส่วนเกิน
+
+•	list-group-item = รายการแต่ละข้อภายใน list group
+
+
+
+
+<!-- Features -->
+ features = id ของ section นี้ ใช้สำหรับลิงก์จากเมนูหรือปุ่ม เช่น href="#features"
+
+py-5 = กำหนด padding ด้านบนและด้านล่างระดับ 5
+
+container = กล่องกลางของ Bootstrap ใช้จำกัดความกว้างของเนื้อหาและจัดให้อยู่กลางหน้า
+
+section-title = class ที่ผู้พัฒนาเขียนเพิ่มเอง ใช้กำหนดรูปแบบหัวข้อของแต่ละ section
+
+text-center = จัดข้อความให้อยู่กึ่งกลาง
+
+text-muted = กำหนดสีข้อความให้ดูจางลงหรือเป็นข้อความรอง
+
+mb-5 = กำหนด margin ด้านล่างระดับ 5
+
+row = แถวของระบบ Grid ใน Bootstrap ใช้สำหรับครอบคอลัมน์
+
+g-4 = กำหนดระยะห่างระหว่างคอลัมน์และองค์ประกอบภายใน Grid ระดับ 4
+
+col-md-4 = คอลัมน์ที่มีขนาด 4 ส่วนจาก 12 ส่วนเมื่อหน้าจออยู่ระดับ md ขึ้นไป หรือแสดงได้ 3 คอลัมน์ต่อแถว
+
+card = กล่องเนื้อหาแบบการ์ดของ Bootstrap
+
+feature-card = class ที่ผู้พัฒนาเขียนเพิ่มเอง ใช้กำหนดเอฟเฟกต์พิเศษของการ์ด เช่น hover หรือการยกตัวขึ้น
+
+h-100 = กำหนดความสูงของ element ให้เต็มพื้นที่ 100% ของคอลัมน์
+
+shadow-sm = เพิ่มเงาขนาดเล็กให้ element
+
+border-0 = ลบเส้นขอบของ element ออก
+
+card-body = พื้นที่เนื้อหาหลักภายในการ์ด
+
+card-title = รูปแบบหัวข้อภายในการ์ด
+
+card-text = รูปแบบข้อความเนื้อหาภายในการ์ด
+
+btn = คลาสพื้นฐานสำหรับทำปุ่มใน Bootstrap
+
+btn-primary = ปุ่มสีหลักของระบบ มักเป็นสีน้ำเงิน
+
+btn-success = ปุ่มสีเขียว ใช้สื่อถึงสถานะบวกหรือการดำเนินการที่สำเร็จ
+
+btn-warning = ปุ่มสีเหลืองหรือส้ม ใช้เน้นให้สังเกตเห็น
+
+text-dark = กำหนดสีข้อความเป็นสีเข้ม มักใช้กับปุ่มสีอ่อนอย่าง btn-warning เพื่อให้อ่านง่าย
+
+
+
+
+<!-- Form contact -->
+
+contact = id ของ section นี้ ใช้เป็นจุดอ้างอิงสำหรับลิงก์ เช่น href="#contact"
+
+py-5 = กำหนด padding ด้านบนและด้านล่างระดับ 5
+
+container = กล่องกลางของ Bootstrap ใช้จำกัดความกว้างของเนื้อหาและจัดให้อยู่กลางหน้า
+
+row = แถวของระบบ Grid ใน Bootstrap ใช้สำหรับครอบคอลัมน์
+
+g-4 = กำหนดระยะห่างระหว่างคอลัมน์ระดับ 4
+
+col-lg-6 = คอลัมน์ที่มีขนาดครึ่งหนึ่งของแถวเมื่อหน้าจออยู่ระดับใหญ่ lg ขึ้นไป
+
+section-title = class ที่ผู้พัฒนาเขียนเพิ่มเอง ใช้กำหนดรูปแบบหัวข้อของ section
+
+text-muted = กำหนดสีข้อความให้ดูจางลงหรือเป็นข้อความรอง
+
+bg-white = กำหนดพื้นหลังสีขาว
+
+p-4 = กำหนด padding ทุกด้านระดับ 4
+
+rounded = ทำให้มุมของ element โค้งมน
+
+shadow-sm = เพิ่มเงาขนาดเล็กให้ element
+
+form = แท็กสำหรับสร้างแบบฟอร์ม
+
+mb-3 = กำหนด margin ด้านล่างระดับ 3
+
+label = ป้ายข้อความที่อธิบายช่องกรอกข้อมูล
+
+for = ใช้เชื่อม label กับ input, select หรือ textarea ที่มี id ตรงกัน
+
+form-label = รูปแบบมาตรฐานของ label ใน Bootstrap
+
+input = ช่องรับข้อมูลแบบบรรทัดเดียว
+
+type="text" = ช่องกรอกข้อความทั่วไป
+
+type="email" = ช่องกรอกอีเมล
+
+form-control = คลาสมาตรฐานของ Bootstrap สำหรับ input และ textarea
+
+id = ชื่อประจำของ element ใช้เชื่อมกับ label หรือใช้อ้างอิงใน JavaScript/CSS
+
+placeholder = ข้อความตัวอย่างที่แสดงในช่องกรอกก่อนผู้ใช้พิมพ์
+
+select = ช่องเลือกข้อมูลแบบรายการ
+
+form-select = คลาสมาตรฐานของ Bootstrap สำหรับ select
+
+option = ตัวเลือกภายใน select
+
+selected = กำหนดตัวเลือกเริ่มต้นของ select
+
+textarea = ช่องกรอกข้อความหลายบรรทัด
+
+rows="4" = กำหนดความสูงเริ่มต้นของ textarea ประมาณ 4 บรรทัด
+
+button = ปุ่มคำสั่ง
+
+type="submit" = ปุ่มสำหรับส่งข้อมูลในฟอร์ม
+
+btn = คลาสพื้นฐานสำหรับทำปุ่มใน Bootstrap
+
+btn-primary = ปุ่มสีหลักของระบบ
+
+h-100 = กำหนดความสูงของ element ให้เต็มพื้นที่ 100%
+
+hr = เส้นคั่นแนวนอน
+
+strong = ทำข้อความให้เด่นหรือหนาขึ้น
+
+
+
+
+
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="">
+
+                <!-- Brand -->
+                <div class="">
+                    <h3 class="footer-brand">MyBootstrapSite</h3>
+                    <p class="footer-text">
+                        ตัวอย่าง Footer สไตล์ทันสมัยสำหรับเว็บไซต์องค์กร ระบบนักศึกษา
+                        หน้า dashboard หรือ landing page โดยใช้ Bootstrap ร่วมกับ custom CSS
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="">
+                    <h5 class="footer-title">เมนู</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">หน้าหลัก</a></li>
+                        <li><a href="#features">บริการ</a></li>
+                        <li><a href="#table-section">ข้อมูล</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="">
+                    <h5 class="footer-title">บริการ</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">ออกแบบเว็บไซต์</a></li>
+                        <li><a href="#">พัฒนาระบบงาน</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">UI/UX Prototype</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="">
+                    <h5 class="footer-title">ติดต่อ</h5>
+                    <p class="">นครปฐม, ประเทศไทย</p>
+                    <p class="">โทร: 012-345-6789</p>
+                    <p class="">อีเมล: contact@example.com</p>
+
+                    <div class="social-icons">
+                        <a href="#" class="social-circle">F</a>
+                        <a href="#" class="social-circle">L</a>
+                        <a href="#" class="social-circle">G</a>
+                        <a href="#" class="social-circle">Y</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-line">
+
+            <div class="">
+                <p class="">© 2026 MyBootstrapSite. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#" class="">Privacy Policy</a>
+                    <a href="#" class="">Terms</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>

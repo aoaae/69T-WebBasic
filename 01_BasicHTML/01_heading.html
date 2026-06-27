@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop - Heading</title>
+
+    <style>
+        /* พื้นหลังทั้งหน้า + ฟอนต์หลัก */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        /* ครอบเนื้อหาให้กึ่งกลางและไม่กว้างเกินไป */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* หัวเรื่องใหญ่สุดของหน้า */
+        h1 {
+            text-align: center;
+            color: #c4005a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* กล่อง card หลักแต่ละส่วน */
+        .card {
+            background: #ffffff;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border-top: 4px solid #c4005a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 12px;
+            border-left: 4px solid #c4005a;
+            overflow-x: auto;
+        }
+
+        .note {
+            border-left: 4px solid #e0e0e0;
+            padding-left: 12px;
+            margin-top: 12px;
+            color: #666;
+        }
+
+        .note::before {
+            content: "💡 ";
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Workshop: HTML Headings</h1>
+    <p class="subtitle">ฝึกใช้แท็ก &lt;h1&gt; – &lt;h6&gt; และการปรับขนาดหัวข้อด้วย CSS</p>
+
+    <!-- Card 1: What are Headings? -->
+    <section class="card">
+        <h2>1. ความหมายของ Headings (H1–H6)</h2>
+        <p>HTML มีหัวข้อทั้งหมด 6 ระดับ:</p>
+        <ul>
+            <li><b>H1</b> – หัวข้อใหญ่สุด ใช้สำหรับชื่อหน้าเว็บหรือหัวข้อหลัก</li>
+            <li><b>H2</b> – หัวข้อรอง แบ่ง Section ของเนื้อหา</li>
+            <li><b>H3</b> – หัวข้อย่อยภายใน H2</li>
+            <li><b>H4</b> – ย่อยลงไปอีกระดับ</li>
+            <li><b>H5</b> – ใช้น้อย แต่เน้นลำดับข้อมูล</li>
+            <li><b>H6</b> – เล็กสุด ใช้กับหัวข้อระดับลึก</li>
+        </ul>
+
+        <div class="note">H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</div>
+    </section>
+
+
+    <!-- Card 2: Examples -->
+    <section class="card">
+        <h2>2. ตัวอย่างการใช้ H1–H6</h2>
+
+        <pre>
+        &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+        &lt;h2&gt;HTML Basics&lt;/h2&gt;
+        &lt;h3&gt;What is HTML?&lt;/h3&gt;
+        &lt;h4&gt;HTML Syntax&lt;/h4&gt;
+        &lt;h5&gt;Example Code&lt;/h5&gt;
+        &lt;h6&gt;Note: Case Sensitive&lt;/h6&gt;
+        </pre>
+
+        <p>เมื่อแสดงผลจะได้ขนาดลดหลั่นแบบนี้:</p>
+
+        <h1>H1: Welcome to My Website</h1>
+        <h2>H2: HTML Basics</h2>
+        <h3>H3: What is HTML?</h3>
+        <h4>H4: HTML Syntax</h4>
+        <h5>H5: Example Code</h5>
+        <h6>H6: Note about heading size</h6>
+    </section>
+
+
+    <!-- Card 3: Changing Size -->
+    <section class="card">
+        <h2>3. ถ้าอยากให้หัวข้อ “ใหญ่กว่า” หรือ “เล็กกว่า” ขนาดเดิม?</h2>
+        <p>ใช้ CSS แทนการเลือก h1–h6 ผิดลำดับ เช่น:</p>
+
+        <pre>
+h3 {
+    font-size: 40px;   /* ทำให้ H3 ใหญ่เท่า H1 ได้ */
+    color: #c4005a;
+}
+
+h5 {
+    font-size: 12px;   /* ทำให้ H5 เล็กลงอีก */
+}
+        </pre>
+
+        <p>หรือสามารถกำหนดเฉพาะบางหัวข้อได้:</p>
+
+        <pre>
+&lt;h3 style="font-size: 50px; color: blue;"&gt;Big Custom Heading&lt;/h3&gt;
+        </pre>
+
+        <div class="note">
+            ❗ จำไว้ว่า <b>ลำดับหัวข้อควรเป็น H1 → H2 → H3 ตามโครงสร้างเนื้อหา</b>  
+            ไม่ควรใช้ H5 เพื่อให้ “ตัวเล็กลง” หรือใช้ H1 เพื่อให้ “ตัวใหญ่ขึ้น”  
+            → ต้องแก้ด้วย CSS เท่านั้น
+        </div>
+    </section>
+
+
+
+    <a href="index.html" class="back-link">← Back to HTML Tutorial</a>
+
+</div>
+
+</body>
+</html>

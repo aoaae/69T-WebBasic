@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐾 คู่มือสัตว์เลี้ยง</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">🐾 คู่มือสัตว์เลี้ยง</h1>
+                <p class="header-subtitle">ค้นพบสัตว์เลี้ยงที่เหมาะกับคุณ</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+
+
+            <!-- Category Filter -->
+            <div class="category-filter" id="categoryFilter">
+                <!-- Categories will be rendered by JavaScript -->
+            </div>
+
+            <!-- Pet Grid -->
+            <div class="pet-grid" id="petGrid">
+                <!-- Pet cards will be rendered by JavaScript -->
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">💡 คำแนะนำในการเลือกสัตว์เลี้ยง</h2>
+                <div class="info-grid">
+                    <div class="info-card info-blue">
+                        <h3>พิจารณาไลฟ์สไตล์ของคุณ</h3>
+                        <p>หากคุณมีเวลาจำกัด สัตว์เลี้ยงอย่างปลาหรือแมวอาจเหมาะกับคุณมากกว่าสุนัขที่ต้องการความใส่ใจมาก</p>
+                    </div>
+                    <div class="info-card info-purple">
+                        <h3>พื้นที่อยู่อาศัย</h3>
+                        <p>ห้องเล็กหรือคอนโดอาจไม่เหมาะกับสุนัขพันธุ์ใหญ่ แต่เหมาะกับแมว กระต่าย หรือหนูแฮมสเตอร์</p>
+                    </div>
+                    <div class="info-card info-green">
+                        <h3>งบประมาณ</h3>
+                        <p>นอกจากค่าอาหารแล้ว ยังต้องคิดถึงค่ารักษาพยาบาล ค่าอุปกรณ์ และค่าใช้จ่ายอื่นๆ</p>
+                    </div>
+                    <div class="info-card info-orange">
+                        <h3>อายุขัยของสัตว์</h3>
+                        <p>นกแก้วสามารถมีชีวิตได้ถึง 80 ปี ในขณะที่หนูแฮมสเตอร์มีอายุเพียง 2-3 ปี พิจารณาภาระผูกพันระยะยาว</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Recommendation Form -->
+            <div class="recommendation-section" id="recommendationSection">
+                <h2 class="section-title">🔍 ค้นหาสัตว์เลี้ยงที่เหมาะกับคุณ</h2>
+                <form class="pet-recommendation-form" id="petRecommendationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lifestyle">ไลฟ์สไตล์ของคุณ:</label>
+                            <select id="lifestyle" name="lifestyle" required>
+                                <option value="">เลือกไลฟ์สไตล์</option>
+                                <option value="active">ชอบกิจกรรมกลางแจ้ง กระฉับกระเฉง</option>
+                                <option value="moderate">กิจกรรมปานกลาง เวลาว่างพอสมควร</option>
+                                <option value="quiet">ชอบความเงียบ อยู่บ้านเป็นส่วนใหญ่</option>
+                                <option value="busy">ยุ่งมาก เวลาจำกัด</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="livingSpace">พื้นที่อยู่อาศัย:</label>
+                            <select id="livingSpace" name="livingSpace" required>
+                                <option value="">เลือกพื้นที่อยู่อาศัย</option>
+                                <option value="house-large">บ้านใหญ่พร้อมสวน</option>
+                                <option value="house-small">บ้านขนาดเล็ก</option>
+                                <option value="condo">คอนโด/อพาร์ตเม้นต์</option>
+                                <option value="studio">ห้องสตูดิโอ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="experience">ประสบการณ์เลี้ยงสัตว์:</label>
+                            <select id="experience" name="experience" required>
+                                <option value="">เลือกประสบการณ์</option>
+                                <option value="beginner">ไม่มีประสบการณ์</option>
+                                <option value="some">มีประสบการณ์บ้าง</option>
+                                <option value="experienced">มีประสบการณ์มาก</option>
+                                <option value="expert">ผู้เชี่ยวชาญ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">งบประมาณต่อเดือน:</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">เลือกงบประมาณ</option>
+                                <option value="low">น้อยกว่า 1,000 บาท</option>
+                                <option value="medium">1,000 - 3,000 บาท</option>
+                                <option value="high">3,000 - 5,000 บาท</option>
+                                <option value="premium">มากกว่า 5,000 บาท</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="timeAvailable">เวลาว่างต่อวัน:</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="timeAvailable" value="less1" required>
+                                    <span>น้อยกว่า 1 ชั่วโมง</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="timeAvailable" value="1to3" required>
+                                    <span>1-3 ชั่วโมง</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="timeAvailable" value="3to6" required>
+                                    <span>3-6 ชั่วโมง</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="timeAvailable" value="more6" required>
+                                    <span>มากกว่า 6 ชั่วโมง</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="preferences">ความต้องการพิเศษ:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="quiet">
+                                    <span>เงียบ ไม่ส่งเสียงดัง</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="social">
+                                    <span>เข้ากับคนง่าย</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="lowMaintenance">
+                                    <span>ดูแลง่าย</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="playful">
+                                    <span>ชอบเล่น กระฉับกระเฉง</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="preferences" value="cuddly">
+                                    <span>ชอบกอด อ่อนโยน</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">🔍 ค้นหาสัตว์เลี้ยงที่เหมาะสม</button>
+                        <button type="reset" class="btn-reset">🔄 เริ่มใหม่</button>
+                    </div>
+                </form>
+
+                <div class="recommendation-results" id="recommendationResults" style="display: none;">
+                    <h3>🎯 สัตว์เลี้ยงที่แนะนำสำหรับคุณ:</h3>
+                    <div class="recommended-pets" id="recommendedPets">
+                        <!-- Results will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 คู่มือสัตว์เลี้ยง | สร้างด้วยความรักต่อสัตว์ทุกชนิด 🐾</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
