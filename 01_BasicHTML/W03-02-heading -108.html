@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading-Workshop</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #eceeef;
+
+            /* เพิ่ม */
+            line-height: 1.6;
+
+
+        }
+
+/* --------   แก้เป็นใช้ class  ---------
+        header {
+            background: linear-gradient(90deg, rgb(28, 100, 233), rgb(109, 216, 255));
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+*/
+        .header {
+            background: linear-gradient(to right, #014ff8, #15bafc);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+/*-------------------------------------*/
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            /* เพิ่ม */
+            width: 90%;
+        }
+
+        /*ย้ายจากข้างล่างขี้นมานี่*/
+        .hero {
+            padding: 50px 0;
+        }
+
+        /* แก้ใหม่ แบบ อ้างอิง 2 ระดับ */
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 10px;
+            color: #23388c;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #77787e;
+        }
+        /*------------------*/
+
+    /* 
+        .text-title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    */
+
+        .text-center {
+            text-align: center;
+        }
+
+        .card {
+            background-color:rgb(253, 253, 253);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 50px;
+            margin-bottom: 20px;
+
+            /* เพิ่ม */
+            line-height: 1.6;
+        }
+
+        /*ย้ายจากข้างล่างขี้นมานี่*/
+        .label {
+            color: white;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+
+            /* เพิ่ม */
+            text-align: center;
+        }
+        .h1-label { background: #007bff; }
+        .h2-label { background: #ff00c3; }
+        .h3-label { background: #ff6b6b; }
+        .h4-label { background: #ffa502; }
+        .h5-label { background: #20bf6b; }
+        .h6-label { background: #45b7d1; }
+        /*============*/
+
+        pre {
+            background-color: #f4f4f4;
+            //padding: 10px;
+            //border-radius: 15px;
+            //border-top: 3px solid #2550fb;
+            //border-bottom: 3px solid #2550fb;
+            
+            padding-top: 10px;
+            border-left: 4px solid #cc1bbd;
+            font-size: 16px;
+        }
+
+        .note {
+            
+            //border-left: 4px solid #fb25cd;
+            background-color: #fff0f5;
+
+            /* เพิ่ม */
+            color: #0707ff;
+            padding: 10px 20px;
+            margin: 20px 0;
+        }
+
+        .note::before {
+            content: "👌";
+        }
+
+/* 
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        
+*/
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <p class="text-title">เรียนรู้เว็บเบื้องต้น</p>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header> -->
+   
+    <section class="header">
+        <h1>เรียนรู้เว็บเบื้องต้น</h1>
+        <a href="index.html">Home</a>
+    </section>
+    
+    
+    <div class="container">
+        <section class="hero">
+            <h1 class="">แบบฝึกปฏิบัติ: HTML Heading</h1>
+            <p class="">ฝึกใช้แท็ก &lt;h1> – &lt;h6> และการปรับขนาดหัวข้อด้วย CSS</p>
+        </section>
+        <div class="card">
+            <h2>1. ความหมายของ Headings (H1–H6)</h2>
+            <p>HTML มีหัวข้อทั้งหมด 6 ระดับ</p>
+            <ul>
+                <li><span class="label h1-label">H1</span> – หัวข้อใหญ่สุด ใช้สำหรับชื่อหน้าเว็บหรือหัวข้อหลัก</li>
+                <li><span class="label h2-label">H2</span> – หัวข้อรอง แบ่ง Section ของเนื้อหา</li>
+                <li><span class="label h3-label">H3</span> – หัวข้อย่อยภายใน H2</li>
+                <li><span class="label h4-label">H4</span> – ย่อยลงไปอีกระดับ</li>
+                <li><span class="label h5-label">H5</span> – ใช้น้อย แต่เน้นลำดับข้อมูล</li>
+                <li><span class="label h6-label">H6</span> – เล็กสุด ใช้กับหัวข้อระดับลึก</li>
+            </ul>
+            <!-- <p class="note">💡H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</p> -->
+            <p class="note" style="border-left: 4px solid rgb(168, 4, 4)">💡H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</p>
+        </div>
+        <div class="card">
+            <h2>2. ตัวอย่างการใช้ H1–H6</h2>
+            <pre><code>
+                 &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+                 &lt;h2&gt;HTML Basics&lt;/h2&gt;
+                 &lt;h3&gt;What is HTML?&lt;/h3&gt;
+                 &lt;h4&gt;HTML Syntax&lt;/h4&gt;
+                 &lt;h5&gt;Example Code&lt;/h5&gt;
+                 &lt;h6&gt;Note: Case Sensitive&lt;/h6&gt;</code> </pre>
+            <p class="note">เมื่อแสดงผลจะได้ขนาดลดหลั่นแบบนี้:</p>
+            <h1>H1: Welcome to My Website</h1>
+            <h2>H2: HTML Basics</h2>
+            <h3>H3: What is HTML?</h3>
+            <h4>H4: HTML Syntax</h4>
+            <h5>H5: Example Code</h5>
+            <h6>H6: Note about heading size</h6>
+        </div>
+    </div>
+
+    <!-- ลบทิ้ง
+    <p class="text-center"><a href="index.html">🏡 Back to Home</a></p> 
+    -->
+</body>
+</html>

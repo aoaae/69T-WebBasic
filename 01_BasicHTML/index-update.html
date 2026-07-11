@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Tutorial</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    line-height:1.8;
+}
+
+/* Hero Section */
+header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.1rem;
+    opacity:.9;
+}
+
+/* Navigation */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    list-style:none;
+    padding:15px;
+}
+
+nav li{
+    margin:5px 12px;
+}
+
+nav a{
+    color:#4f46e5;
+    font-weight:600;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#7c3aed;
+}
+
+/* Main */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+/* Card Section */
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+section h2{
+    color:#4f46e5;
+    margin-bottom:15px;
+    border-left:5px solid #7c3aed;
+    padding-left:12px;
+}
+
+/* Code Block */
+pre{
+    background:#f8fafc;
+    border-left:5px solid #4f46e5;
+    padding:15px;
+    border-radius:8px;
+    overflow-x:auto;
+    margin-top:15px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+/* Links */
+a{
+    text-decoration:none;
+}
+
+.workshop-btn{
+    display:inline-block;
+    background:#4f46e5;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    margin-top:10px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.workshop-btn:hover{
+    background:#7c3aed;
+}
+
+.top-btn{
+    display:inline-block;
+    background:#e2e8f0;
+    color:#333;
+    padding:8px 15px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.top-btn:hover{
+    background:#cbd5e1;
+}
+
+/* Topic Grid */
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.topic-grid a{
+    display:block;
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    color:#4f46e5;
+    font-weight:600;
+    transition:.3s;
+}
+
+.topic-grid a:hover{
+    transform:translateY(-3px);
+}
+
+/* Footer */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+}
+
+footer p{
+    margin:5px 0;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    header h1{
+        font-size:2rem;
+    }
+
+    nav ul{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    section{
+        padding:20px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header id="top">
+    <h1>HTML Tutorial</h1>
+    <p>Learn HTML from Beginner to Professional Level</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#heading">Heading</a></li>
+        <li><a href="#paragraph">Paragraph</a></li>
+        <li><a href="#formatting">Formatting</a></li>
+        <li><a href="#link">Links</a></li>
+        <li><a href="#list">Lists</a></li>
+        <li><a href="#image">Images</a></li>
+        <li><a href="#table">Tables</a></li>
+        <li><a href="#form">Forms</a></li>
+        <li><a href="#semantic">Semantic</a></li>
+        <li><a href="#myworkshop">Workshop</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- Topics -->
+    <section>
+        <h2>Topics</h2>
+
+        <div class="topic-grid">
+            <a href="#introduction">Introduction to HTML</a>
+            <a href="#structure">HTML Document Structure</a>
+            <a href="#heading">Heading</a>
+            <a href="#paragraph">Paragraph</a>
+            <a href="#formatting">Text Formatting</a>
+            <a href="#link">Creating Links</a>
+            <a href="#list">Lists</a>
+            <a href="#image">Adding Images</a>
+            <a href="#table">Creating Tables</a>
+            <a href="#form">HTML Forms</a>
+            <a href="#semantic">Semantic HTML</a>
+            <a href="#myworkshop">My Workshop</a>
+        </div>
+    </section>
+
+    <!-- Section 1 -->
+    <section id="introduction">
+        <h2>Introduction to HTML</h2>
+
+        <pre>
+HTML stands for HyperText Markup Language.
+HTML is the standard markup language for creating web pages.
+HTML describes the structure of a web page.
+HTML consists of a series of elements.
+HTML elements tell the browser how to display content.
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="structure">
+        <h2>HTML Document Structure</h2>
+
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    Content
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="heading">
+        <h2>Heading</h2>
+
+        <a href="W03_01_heading.html" class="workshop-btn">
+            Open Workshop
+        </a>
+
+        <pre>
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="paragraph">
+        <h2>Paragraph</h2>
+
+        <pre>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="formatting">
+        <h2>Text Formatting</h2>
+
+        <a href="W04_01_formatting.html" class="workshop-btn">
+            Open Workshop
+        </a>
+
+        <pre>
+&lt;b&gt;Bold&lt;/b&gt;
+&lt;i&gt;Italic&lt;/i&gt;
+&lt;u&gt;Underline&lt;/u&gt;
+&lt;mark&gt;Highlight&lt;/mark&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="link">
+        <h2>Creating Links</h2>
+
+        <a href="W05_01_link.html" class="workshop-btn">
+            Open Workshop
+        </a>
+
+        <pre>
+&lt;a href="https://example.com"&gt;Visit Website&lt;/a&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="list">
+        <h2>Lists</h2>
+
+        <pre>
+&lt;ul&gt;
+    &lt;li&gt;Coffee&lt;/li&gt;
+    &lt;li&gt;Tea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Step 1&lt;/li&gt;
+    &lt;li&gt;Step 2&lt;/li&gt;
+&lt;/ol&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="image">
+        <h2>Adding Images</h2>
+
+        <a href="W07_01_image.html" class="workshop-btn">
+            Open Workshop
+        </a>
+
+        <pre>
+&lt;img src="image.jpg" alt="description"&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 9 -->
+    <section id="table">
+        <h2>Creating Tables</h2>
+
+        <pre>
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 10 -->
+    <section id="form">
+        <h2>HTML Forms</h2>
+
+        <pre>
+&lt;form&gt;
+    &lt;input type="text"&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 11 -->
+    <section id="semantic">
+        <h2>Semantic HTML</h2>
+
+        <pre>
+&lt;header&gt;
+&lt;nav&gt;
+&lt;section&gt;
+&lt;article&gt;
+&lt;footer&gt;
+        </pre>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+    <!-- Section 12 -->
+    <section id="myworkshop">
+        <h2>My Workshop</h2>
+
+        <ul>
+            <li><a href="#">Workshop 01 : Rabbit</a></li>
+            <li><a href="#">Workshop 02 : Login</a></li>
+        </ul>
+
+        <br>
+
+        <a href="#top" class="top-btn">↑ Back to Top</a>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 HTML Tutorial</p>
+    <p>Created by Suksawat Saelim</p>
+</footer>
+
+</body>
+</html>

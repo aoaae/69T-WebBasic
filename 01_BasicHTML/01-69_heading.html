@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกปฏิบัติ: HTML Heading</title>
+    <link rel="stylesheet" href="01-69_heading.css">
+
+</head>
+
+<body>
+
+    <!-- ส่วนหัวเว็บไซต์ -->
+    <header>
+        <div class="logo">เรียนรู้เว็บเบื้องต้น</div>
+
+        <nav>
+            <a href="#">Home</a>
+        </nav>
+    </header>
+
+    <!-- ส่วนแนะนำบทเรียน -->
+    <section class="hero">
+        <!-- <div class="hero-icon">&lt;/&gt;</div> -->
+
+        <div class="hero-text">
+            <h1>แบบฝึกปฏิบัติ: HTML Heading</h1>
+            <p>
+                เรียนรู้การใช้งานแท็ก 
+                <span class="tag">&lt;h1&gt;</span> ถึง 
+                <span class="tag">&lt;h6&gt;</span> 
+                พร้อมตัวอย่างและการจัดรูปแบบด้วย CSS
+            </p>
+        </div>
+    </section>
+
+    <!-- เนื้อหาหลัก -->
+    <main class="container">
+
+        <!-- <section class="card-grid"> -->
+        <section>
+
+            <!-- Card 1: ตัวอย่างผลลัพธ์ -->
+            <div class="card">
+                <div class="card-header">
+                    ตัวอย่างผลลัพธ์
+                </div>
+
+                <div class="card-body sample">
+
+                    <div class="heading-row">
+                        <span class="label h1-label">H1:</span>
+                        <h1>หัวข้อหลักของหน้าเว็บ</h1>
+                    </div>
+
+                    <div class="heading-row">
+                        <span class="label h2-label">H2:</span>
+                        <h2>หัวข้อรอง</h2>
+                    </div>
+
+                    <div class="heading-row">
+                        <span class="label h3-label">H3:</span>
+                        <h3>หัวข้อย่อยระดับ 3</h3>
+                    </div>
+
+                    <div class="heading-row">
+                        <span class="label h4-label">H4:</span>
+                        <h4>หัวข้อย่อยระดับ 4</h4>
+                    </div>
+
+                    <div class="heading-row">
+                        <span class="label h5-label">H5:</span>
+                        <h5>หัวข้อย่อยระดับ 5</h5>
+                    </div>
+
+                    <div class="heading-row">
+                        <span class="label h6-label">H6:</span>
+                        <h6>หัวข้อย่อยระดับ 6</h6>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Card 2: ตัวอย่างโค้ด -->
+            <div class="card">
+                <div class="card-header">
+                    ตัวอย่างโค้ด HTML
+                </div>
+
+                <div class="card-body">
+<pre><code>&lt;h1&gt;หัวข้อหลักของหน้าเว็บ&lt;/h1&gt;
+&lt;h2&gt;หัวข้อรอง&lt;/h2&gt;
+&lt;h3&gt;หัวข้อย่อยระดับ 3&lt;/h3&gt;
+&lt;h4&gt;หัวข้อย่อยระดับ 4&lt;/h4&gt;
+&lt;h5&gt;หัวข้อย่อยระดับ 5&lt;/h5&gt;
+&lt;h6&gt;หัวข้อย่อยระดับ 6&lt;/h6&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- เกร็ดความรู้ -->
+        <section class="tip-box">
+            <div class="tip-icon">💡</div>
+
+            <div class="tip-content">
+                <h2>เกร็ดความรู้</h2>
+
+                <p>
+                    แท็ก <span class="tag">&lt;h1&gt;</span> ใช้สำหรับหัวข้อหลักที่สำคัญที่สุดของหน้าเว็บ 
+                    โดยทั่วไปควรมีเพียง 1 ครั้งต่อ 1 หน้าเว็บ ส่วน 
+                    <span class="tag">&lt;h2&gt;</span> ถึง 
+                    <span class="tag">&lt;h6&gt;</span> ใช้สำหรับหัวข้อรองลงมาตามลำดับ 
+                    เพื่อช่วยจัดโครงสร้างเนื้อหาให้เป็นระเบียบ อ่านง่าย 
+                    และมีผลดีต่อการทำงานของเครื่องมือค้นหา หรือ SEO
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

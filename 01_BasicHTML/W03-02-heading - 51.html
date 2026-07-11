@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ebf8ff;
+            
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(to right, #014ff8, #15bafc);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            /* เพิ่ม */
+            width: 90%;
+        }
+
+        .hero {
+            padding: 50px 20px;
+        }
+
+        /* เพิ่ม */
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 10px;
+            color: #23388c;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #77787e;
+        }
+        /* ====== */
+
+    /* 
+        .text-title {
+            color: #313f91;
+            font-size: 48px;
+            //text-align: center; 
+        }
+    */
+        .text-center {
+            text-align: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgb(0, 0, 0);
+            margin-bottom: 20px;
+
+            /* เพิ่ม */
+            line-height: 1.6;
+        }
+
+        .label {
+            padding: 2px 9px;
+            border-radius: 7px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .h1-label { background-color: rgb(253, 0, 0);}
+        .h2-label { background-color: rgb(0, 106, 255);}
+        .h3-label { background-color: rgb(0, 255, 94);}
+        .h4-label { background-color: rgb(255, 0, 234);}
+        .h5-label { background-color: rgb(255, 196, 0);}
+        .h6-label { background-color: rgb(115, 0, 255);}
+
+        pre {
+            background-color: #f4f4f4;
+            padding-top: 10px;
+            border-left: 4px solid #cc1bbd;
+            font-size: 16px;
+        }
+
+        .note {
+            color: #0707ff;
+            background-color: #fff532;
+
+            /* เพิ่ม */
+            padding: 10px 20px;
+            margin: 20px 0;
+        }
+        .note::before {
+            content: "💚";
+ 
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <h1>เรียนรู้เว็บเบื้องต้น</h1>
+        <a href="index.html">Home</a>
+    </section>
+
+
+    <div class="container">
+        <div class="hero">
+            <h1 class="text-title">Workshop: HTML Heading</h1>
+            <p>ฝึกใช้แท็ก &lt;h1> – &lt;h6> และการปรับขนาดหัวข้อด้วย CSS</p>
+        </div>
+        <div class="card">
+            <h2>1. ความหมายของ Headings (H1–H6)</h2>
+            <p>HTML มีหัวข้อทั้งหมด 6 ระดับ</p>
+            <ul>
+                <li><span class="label h1-label">H1</span> – หัวข้อใหญ่สุด ใช้สำหรับชื่อหน้าเว็บหรือหัวข้อหลัก</li>
+                <li><span class="label h2-label">H2</span> – หัวข้อรอง แบ่ง Section ของเนื้อหา</li>
+                <li><span class="label h3-label">H3</span> – หัวข้อย่อยภายใน H2</li>
+                <li><span class="label h4-label">H4</span> – ย่อยลงไปอีกระดับ</li>
+                <li><span class="label h5-label">H5</span> – ใช้น้อย แต่เน้นลำดับข้อมูล</li>
+                <li><span class="label h6-label">H6</span> – เล็กสุด ใช้กับหัวข้อระดับลึก</li>
+            </ul>
+            <p class="note" style="border-left: 4px solid rgb(219, 22, 196)">💡H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</p>
+        </div>
+        <div class="card">
+            <h2>2. ตัวอย่างการใช้ H1–H6</h2>
+            <pre>
+                <code>
+            &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+            &lt;h2&gt;HTML Basics&lt;/h2&gt;
+            &lt;h3&gt;What is HTML?&lt;/h3&gt;
+            &lt;h4&gt;HTML Syntax&lt;/h4&gt;
+            &lt;h5&gt;Example Code&lt;/h5&gt;
+            &lt;h6&gt;Note: Case Sensitive&lt;/h6&gt;
+                </code>
+            </pre>
+
+            <p class="note">เมื่อแสดงผลจะได้ขนาดลดหลั่นแบบนี้:</p>
+
+            <h1>H1: Welcome to My Website</h1>
+            <h2>H2: HTML Basics</h2>
+            <h3>H3: What is HTML?</h3>
+            <h4>H4: HTML Syntax</h4>
+            <h5>H5: Example Code</h5>
+            <!-- <h6 class="note">H6: Note about heading size</h6> -->
+            <h6>H6: Note about heading size</h6>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

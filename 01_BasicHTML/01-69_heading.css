@@ -1,0 +1,259 @@
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Prompt", "Tahoma", sans-serif;
+            background: #f4f8ff;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* ส่วนหัวเว็บไซต์ */
+        header {
+            background: linear-gradient(90deg, #005bea, #00c6fb);
+            color: white;
+            padding: 18px 60px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+            text-align: center;
+
+            //display: flex;
+            //justify-content: space-between;
+            //align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+
+            //margin-left: 25px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ส่วน Hero */
+        .hero {
+            padding: 50px 80px 30px;
+
+            //display: flex;
+            //align-items: center;
+            //gap: 25px;
+        }
+
+        .xxx-hero-icon {
+            background: #007bff;
+            color: white;
+            width: 90px;
+            height: 90px;
+            border-radius: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+            font-weight: bold;
+            box-shadow: 0 8px 18px rgba(0, 123, 255, 0.35);
+        }
+
+        .hero-text h1 {
+            font-size: 46px;
+            color: #0f2f75;
+            margin-bottom: 8px;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: #4b5563;
+        }
+
+        .tag {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* กล่องเนื้อหา */
+        .container {
+            padding: 20px 60px 50px;
+        }
+
+        .xxx-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dbeafe;
+            
+            overflow: hidden;
+
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            padding: 18px 22px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #005bea;
+            background: #f8fbff;
+            border-bottom: 1px solid #dbeafe;
+        }
+
+        .card-body {
+            padding: 22px;
+        }
+
+        /* ตัวอย่างผลลัพธ์ Heading */
+        .heading-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .label {
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 5px 10px;
+            text-align: center;
+            min-width: 48px;
+        }
+
+        .h1-label { background: #007bff; }
+        .h2-label { background: #14b8a6; }
+        .h3-label { background: #22c55e; }
+        .h4-label { background: #f59e0b; }
+        .h5-label { background: #ef4444; }
+        .h6-label { background: #8b5cf6; }
+
+        .sample h1 {
+            font-size: 34px;
+            color: #111827;
+        }
+
+        .sample h2 {
+            font-size: 28px;
+            color: #1f2937;
+        }
+
+        .sample h3 {
+            font-size: 24px;
+            color: #374151;
+        }
+
+        .sample h4 {
+            font-size: 20px;
+            color: #4b5563;
+        }
+
+        .sample h5 {
+            font-size: 17px;
+            color: #6b7280;
+        }
+
+        .sample h6 {
+            font-size: 15px;
+            color: #9ca3af;
+        }
+
+        /* กล่องโค้ด */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 22px;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.8;
+
+            overflow-x: auto; // เพิ่มแถบเลื่อนแนวนอนเมื่อเนื้อหาเกินขนาด
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+
+
+        /* กล่องเกร็ดความรู้ */
+        .tip-box {
+            background: #fff7df;
+            border: 1px solid #facc15;
+            border-radius: 18px;
+            padding: 24px 30px;
+            box-shadow: 0 8px 18px rgba(250, 204, 21, 0.18);
+            
+            display: flex;
+            gap: 20px;
+        }
+
+        .tip-icon {
+            width: 58px;
+            height: 58px;
+            background: #facc15;
+            color: white;
+            border-radius: 50%;
+            font-size: 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; // ป้องกันไม่ให้ไอคอนย่อขนาด
+        }
+
+        .tip-content h2 {
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .tip-content p {
+            font-size: 17px;
+            color: #4b5563;
+        }
+
+        /* Responsive สำหรับจอเล็ก */
+        @media (max-width: 1000px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 40px 30px 20px;
+            }
+
+            .container {
+                padding: 20px 30px 40px;
+            }
+
+            header {
+                padding: 18px 30px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .hero-text h1 {
+                font-size: 34px;
+            }
+        }

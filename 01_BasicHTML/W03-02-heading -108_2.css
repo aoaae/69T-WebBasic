@@ -1,0 +1,215 @@
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #eceeef;
+
+            /* เพิ่ม */
+            line-height: 1.6;
+
+
+        }
+
+/* --------   แก้เป็นใช้ class  ---------
+        header {
+            background: linear-gradient(90deg, rgb(28, 100, 233), rgb(109, 216, 255));
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+*/
+        .header {
+            background: linear-gradient(to right, #014ff8, #15bafc);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+/*-------------------------------------*/
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            /* เพิ่ม */
+            width: 90%;
+
+            padding: 50px 0;
+        }
+
+        /*ย้ายจากข้างล่างขี้นมานี่*/
+        .hero {
+            //padding: 50px 0;
+            
+            padding: 0 0 50px;
+        }
+
+        /* แก้ใหม่ แบบ อ้างอิง 2 ระดับ */
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 10px;
+            color: #23388c;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #77787e;
+        }
+        /*------------------*/
+
+    /* 
+        .text-title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    */
+
+        .text-center {
+            text-align: center;
+        }
+
+        .card {
+            background-color:rgb(253, 253, 253);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            //padding: 20px 50px; /*ค่อยเอาออกเพิ่มตอนการ์ด header body*/
+            margin-bottom: 20px;
+
+            /* เพิ่ม */
+            line-height: 1.6;
+
+            border: 2px solid #dbeafe;
+            overflow: hidden;   /*ค่อยเพิ่มตอนการ์ด header 
+            body*/
+        }
+
+        /*ย้ายจากข้างล่างขี้นมานี่*/
+        .label {
+            color: white;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+
+            /* เพิ่ม */
+            text-align: center;
+        }
+        .h1-label { background: #007bff; }
+        .h2-label { background: #ff00c3; }
+        .h3-label { background: #ff6b6b; }
+        .h4-label { background: #ffa502; }
+        .h5-label { background: #20bf6b; }
+        .h6-label { background: #45b7d1; }
+        /*============*/
+
+/*==  ก่อนแก้เป็นกล่องดำ
+        pre {
+            background-color: #f4f4f4;
+            //padding: 10px;
+            //border-radius: 15px;
+            //border-top: 3px solid #2550fb;
+            //border-bottom: 3px solid #2550fb;
+            
+            padding-top: 10px;
+            border-left: 4px solid #cc1bbd;
+            font-size: 16px;
+        }
+==*/
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 22px;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.8;
+
+            overflow-x: auto; /* เพิ่มแถบเลื่อนแนวนอนเมื่อเนื้อหาเกินขนาด */
+
+            margin-bottom: 20px;
+        }
+
+        .note {
+            
+            //border-left: 4px solid #fb25cd;
+            background-color: #fff0f5;
+
+            /* เพิ่ม */
+            color: #0707ff;
+            padding: 10px 20px;
+            /margin: 20px 0;
+            
+            margin: 0 20px 20px ;
+        }
+
+        .note::before {
+            content: "👌";
+        }
+
+/* 
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        
+*/
+
+        .tag {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .heading-row {
+            margin-bottom: 14px;
+        }
+
+        .card-header {
+            padding: 18px 22px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #005bea;
+            background: #f8fbff;
+            border-bottom: 1px solid #dbeafe;
+        }
+
+        .card-body {
+            padding: 22px;
+        }
+
+        .text-shade {
+            padding: 20px;
+            background-color: #fbfbe7;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .text-shade h1 {color: #111827;}
+        .text-shade h2 {color: #1e293b;}
+        .text-shade h3 {color: #334155;}
+        .text-shade h4 {color: #475569;}
+        .text-shade h5 {color: #64748b;}
+        .text-shade h6 {color: #8794a7;}
+
+
+                /* กล่องเกร็ดความรู้ */
+        .tip-box {
+            background: #fff7df;
+            border: 1px solid #facc15;
+            border-radius: 18px;
+            padding: 24px 30px;
+            box-shadow: 0 8px 18px rgba(250, 204, 21, 0.18);
+            
+        }

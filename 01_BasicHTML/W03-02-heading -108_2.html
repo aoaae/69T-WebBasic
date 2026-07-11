@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading-Workshop</title>
+    <link rel="stylesheet" href="W03-02-heading -108_2.css">
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <p class="text-title">เรียนรู้เว็บเบื้องต้น</p>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header> -->
+   
+    <section class="header">
+        <h1>เรียนรู้เว็บเบื้องต้น</h1>
+        <a href="index.html">Home</a>
+    </section>
+    
+    
+    <div class="container">
+    <!-- ส่วนหัว -->
+        <section class="hero">
+            <h1 class="">แบบฝึกปฏิบัติ: HTML Heading</h1>
+            <p class="">ฝึกใช้แท็ก 
+                <span class="tag">&lt;h1></span> – 
+                <span class="tag">&lt;h6></span> และการปรับขนาดหัวข้อด้วย CSS</p>
+        </section>
+
+    <!-- เนื้อหาหลัก -->
+        <!-- การ์ด 1 -->
+        <section class="card">
+            <div class="card-header">
+                <h2>1. ความหมายของ Headings (H1–H6)</h2>
+            </div>
+            <div class="card-body">
+                <p style="margin-bottom: 14px;">HTML มีหัวข้อทั้งหมด 6 ระดับ</p>
+                
+                <div class="heading-row"><span class="label h1-label">H1</span> – หัวข้อใหญ่สุด ใช้สำหรับชื่อหน้าเว็บหรือหัวข้อหลัก</div>
+                <div class="heading-row"><span class="label h2-label">H2</span> – หัวข้อรอง แบ่ง Section ของเนื้อหา</div>
+                <div class="heading-row"><span class="label h3-label">H3</span> – หัวข้อย่อยภายใน H2</div>
+                <div class="heading-row"><span class="label h4-label">H4</span> – ย่อยลงไปอีกระดับ</div>
+                <div class="heading-row"><span class="label h5-label">H5</span> – ใช้น้อย แต่เน้นลำดับข้อมูล</div>
+                <div class="heading-row"><span class="label h6-label">H6</span> – เล็กสุด ใช้กับหัวข้อระดับลึก</div>
+            </div>
+            
+            <!-- <p class="note">💡H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</p> -->
+            <p class="note" style="border-left: 4px solid rgb(168, 4, 4)">💡H1 ควรมีเพียง 1 อันในแต่ละหน้า เพื่อช่วย SEO และโครงสร้างเอกสาร</p>
+        </section>
+
+        <!-- การ์ด 2 -->
+        <section class="card">
+            <div class="card-header">
+                <h2>2. ตัวอย่างการใช้ H1–H6</h2>
+            </div>
+            <div class="card-body">
+                <pre><code>
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;h2&gt;HTML Basics&lt;/h2&gt;
+    &lt;h3&gt;What is HTML?&lt;/h3&gt;
+    &lt;h4&gt;HTML Syntax&lt;/h4&gt;
+    &lt;h5&gt;Example Code&lt;/h5&gt;
+    &lt;h6&gt;Note: Case Sensitive&lt;/h6&gt;</code> </pre>
+
+                <p>เมื่อแสดงผลจะได้ขนาดลดหลั่นแบบนี้:</p>
+
+                <div class="text-shade">
+                    <h1>H1: Welcome to My Website</h1>
+                    <h2>H2: HTML Basics</h2>
+                    <h3>H3: What is HTML?</h3>
+                    <h4>H4: HTML Syntax</h4>
+                    <h5>H5: Example Code</h5>
+                    <h6>H6: Note about heading size</h6>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- เกร็ดความรู้ -->
+        <section class="tip-box">
+                <h2>เกร็ดความรู้</h2>
+                <p>
+                    แท็ก <span class="tag">&lt;h1&gt;</span> ใช้สำหรับหัวข้อหลักที่สำคัญที่สุดของหน้าเว็บ 
+                    โดยทั่วไปควรมีเพียง 1 ครั้งต่อ 1 หน้าเว็บ ส่วน 
+                    <span class="tag">&lt;h2&gt;</span> ถึง 
+                    <span class="tag">&lt;h6&gt;</span> ใช้สำหรับหัวข้อรองลงมาตามลำดับ 
+                    เพื่อช่วยจัดโครงสร้างเนื้อหาให้เป็นระเบียบ อ่านง่าย 
+                    และมีผลดีต่อการทำงานของเครื่องมือค้นหา หรือ SEO
+                </p>
+        </section>
+
+    </div>
+
+    <!-- ลบทิ้ง
+    <p class="text-center"><a href="index.html">🏡 Back to Home</a></p> 
+    -->
+</body>
+</html>
