@@ -1,0 +1,449 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Kanit", Arial, sans-serif;
+    /* font-family: "Google Sans", Arial, sans-serif; */
+    background-color: #ebf8ff;
+    
+    line-height: 1.6;
+}
+
+xx-footer,
+.xx-hero,
+.xx-card,
+.xx-tip-box {
+    border: 1px solid #ff0000;
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+}
+
+
+/* =========================
+    Header / Navigation
+========================= */
+header {
+    background: linear-gradient(to right, #0036aa, #55befb);
+   
+    /* padding: 20px; */
+    padding: 18px 60px;
+
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon { font-size: 50px; }
+.brand-text p { 
+    font-size: 14px;
+    opacity: 0.8;       /* เพิ่มความโปร่งใสให้กับข้อความ */
+}
+
+/* เพิ่ม */
+.brand-text h1 {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+
+    /* เพิ่ม */
+    font-size: 16px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+    Hero Section
+========================= */
+.hero {
+    padding: 45px 70px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #007bff, #005bea);
+    border-radius: 22px;
+
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    box-shadow: 0 10px 24px rgba(0, 123, 255, 0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    color: #0f2f75;
+
+    margin-bottom: 8px;
+}
+
+.hero-text p {
+    font-size: 20px;
+    color: #4b5563;
+}
+
+/* =========================
+    Main Layout
+========================= */
+.container {
+    /* max-width: 1200px; */
+    width: 100%;
+    /* margin: 0 auto; */
+
+    padding: 20px 60px 50px;
+    
+    /* background-color: #b5fd76; */
+}
+
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: repeat(3,1fr); */
+
+    /* background-color: #fffb2c; */
+
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #dbeafe;
+    box-shadow: 0 8px 22px rgba(15, 47, 117, 0.08);
+    
+    overflow: hidden;  /* ซ่อนมุม */
+}
+
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #005bea;
+    
+    background: #f8fbff;
+    border-bottom: 1px solid #dbeafe;
+
+    padding: 18px 22px;
+}
+
+
+.card-header-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    color: white;
+    background: #007bff;
+
+    font-size: 20px;
+
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+
+    /* 
+    1. display: inline          วางต่อกันในบรรทัดเดียวได้ แต่จัดของข้างในด้วย flex ไม่ได้ดี
+    2. display: flex            ตัว element จะทำตัวเป็น block คือกินพื้นที่เต็มแถว 
+                                แต่จัดลูกด้านในด้วย flex ได้
+    3. display: inline-flex     ตัว element ไม่กินเต็มแถว แต่วางต่อกับ element อื่นได้ 
+                                และยังจัดของข้างในด้วย flex ได้  
+
+            ตัวมันเอง = วางต่อกับข้อความหรือ element อื่นได้เหมือน inline
+            ของที่อยู่ข้างใน = จัดตำแหน่งด้วย flex ได้
+    */
+
+}
+
+
+/* สี header ของการ์ด 3 */
+.purple {
+    color: #6d28d9;
+}
+
+.purple-bg {
+    background: #7c3aed;
+}
+/* ------------------ */
+
+
+.card-body {
+    padding: 22px;
+}
+
+
+
+/* ==== Card 1:Result Examples===== */
+.format-row {
+    display: grid;
+    grid-template-columns: 95px 1fr;
+    gap: 12px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+
+    align-items: center;
+}
+
+.label {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    padding: 4px 8px;
+    text-align: center;
+}
+
+.b-label { background: #007bff; }
+.strong-label { background: #14b8a6; }
+.i-label { background: #10b981; }
+.em-label { background: #22c55e; }
+.u-label { background: #f59e0b; }
+.mark-label { background: #f59e0b; }
+.small-label { background: #8b5cf6; }
+.del-label { background: #ef4444; }
+.sup-label { background: #7c3aed; }
+.sub-label { background: #3b82f6; }
+
+
+.format-text {
+    font-size: 17px;
+}
+
+
+/* Card 2: HTML Code */
+.code-box {
+    background: #111827;            
+    border-radius: 14px;
+    padding: 20px;
+
+    overflow-x: auto; /* ทำให้สามารถเลื่อนดูโค้ดในแนวนอนได้เมื่อโค้ดยาวเกินขนาดของกล่อง */
+    
+    position: relative; 
+            /* ทำให้สามารถวางไอคอน copy ได้ในตำแหน่งที่ต้องการ 
+                relative: กำหนดตำแหน่งสัมพัทธ์กับองค์ประกอบที่อยู่ก่อนหน้า 
+            */
+}
+
+pre {
+    font-size: 16px;
+    line-height: 1.8;
+
+    white-space: pre-wrap;  /* ทำให้ข้อความยาวเกินบรรทัดจะตัดบรรทัดอัตโนมัติ */
+}
+
+.line-no {
+    color: #9ca3af;
+    display: inline-block; /* ทำให้สามารถกำหนดขนาดและจัดตำแหน่งได้เหมือน block แต่ยังอยู่ในบรรทัดเดียวกับข้อความ */
+    width: 28px;
+}
+
+.html-tag {
+    color: #fb7185;
+}
+
+.html-text {
+    color: #ffffff;
+}
+
+.copy-icon {
+    color: #e5e7eb;
+    font-size: 20px;
+    opacity: 0.8;   /* ทำให้ไอคอนดูจางลงเล็กน้อย */
+    
+    position: absolute; 
+            /* ทำให้ไอคอนอยู่ในตำแหน่งที่กำหนดโดยไม่กระทบกับเนื้อหาอื่น ๆ 
+            absolute: กำหนดตำแหน่งสัมพัทธ์กับบรรพบุรุษที่มี position: relative; */
+    top: 12px;
+    right: 14px;
+}
+
+
+
+/* Card 3: Practice Activity */
+
+
+.activity-list {
+    list-style: none; /* ลบสัญลักษณ์ bullet point ของรายการ */
+}
+
+.activity-list li {
+    font-size: 17px;
+    margin-bottom: 22px;
+
+    display: flex;  /* ทำให้สามารถจัดตำแหน่งของไอคอนและข้อความให้อยู่ในบรรทัดเดียวกันได้ */
+    align-items: center;  
+    gap: 14px;
+
+}
+
+.check {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    
+    color: white;
+    font-weight: bold;
+
+    display: inline-flex;   /* ทำให้สามารถจัดตำแหน่งของไอคอนให้อยู่ตรงกลางได้ */
+    align-items: center;    /* จัดตำแหน่งไอคอนให้อยู่ตรงกลางตามแนวตั้ง */
+    justify-content: center; /* จัดตำแหน่งไอคอนให้อยู่ตรงกลางตามแนวนอน */
+
+    flex-shrink: 0;  /* ป้องกันไม่ให้ไอคอนถูกย่อขนาดเมื่อพื้นที่ไม่พอ */
+}
+
+.check-blue { background: #007bff; }
+.check-teal { background: #14b8a6; }
+.check-green { background: #22c55e; }
+.check-orange { background: #f59e0b; }
+.check-purple { background: #7c3aed; }
+
+.tag {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.file-name {
+    background: #dbeafe;
+    color: #005bea;
+    padding: 4px 10px;
+    border-radius: 8px;
+
+    font-family: Consolas, monospace;
+    font-weight: bold;
+    margin-left: 14px;    
+}
+
+
+
+/* Tip Box */
+
+.tip-box {
+    background: #fff7df;
+    border: 1px solid #facc15;
+    border-radius: 18px;
+
+    padding: 24px 30px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    box-shadow: 0 8px 18px rgba(250, 204, 21, 0.18);
+}
+
+.tip-icon {
+    width: 60px;
+    height: 60px;
+    background: #facc15;
+    color: white;
+    border-radius: 50%;
+
+    display: flex;  /* ทำให้สามารถจัดตำแหน่งของไอคอนให้อยู่ตรงกลางได้ */
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.tip-content h2 {
+    color: #92400e;
+    margin-bottom: 8px;
+}
+
+.tip-content p {
+    font-size: 17px;
+    color: #4b5563;
+}
+
+/* =========================
+Footer
+========================= */
+footer {
+    background: #0f2f75;
+    color: white;
+    padding: 35px 60px 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: grid;     /* ใช้ grid layout เพื่อจัดวางกล่องเนื้อหาใน footer */
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.footer-box h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.footer-box p {
+    font-size: 15px;
+    color: #dbeafe;
+    margin-bottom: 8px;
+}
+
+.footer-box ul {
+    list-style: none;
+}
+
+.footer-box ul li {
+    margin-bottom: 8px;
+}
+
+.footer-box ul li a {    /* ลิงก์ใน footer  เป็นการอ้างอิงในระดับที่ชี้เฉพาะเจาะจง */
+    color: #dbeafe;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.footer-box ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    padding-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #bfdbfe;
+}

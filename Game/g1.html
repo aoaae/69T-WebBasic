@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Game: ล่าคำศัพท์ แม่กง (ป.3)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Mali', cursive;
+            margin: 0;
+            overflow: hidden;
+            background-color: #87CEEB; 
+            touch-action: none;
+            user-select: none;
+        }
+
+        #camera-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+            transform: scaleX(-1);
+        }
+        
+        .bg-fallback {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+        #ui-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 20; /* เพิ่ม z-index ให้อยู่บนสุด */
+            pointer-events: none;
+        }
+        
+        #game-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10; /* ให้อยู่เหนือกล้อง แต่อยู่ใต้ UI */
+            overflow: hidden;
+        }
+
+        .interactive {
+            pointer-events: auto;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .bubble {
+            position: absolute;
+            pointer-events: auto;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+
+        .bubble:active {
+            transform: scale(0.9) !important;
+        }
+
+        .pop-effect {
+            position: absolute;
+            font-size: 2.5rem;
+            font-weight: bold;
+            pointer-events: none;
+            animation: pop-up 0.8s ease-out forwards;
+            z-index: 30;
+            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+        }
+
+        @keyframes pop-up {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+        }
+        
+        .bubble-burst {
+            animation: burst 0.2s ease-out forwards;
+        }
+        @keyframes burst {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <video id="camera-layer" autoplay playsinline muted></video>
+    <div id="game-container"></div>
+
+    <div id="ui-layer" class="flex flex-col justify-between p-4">
+        
+        <div id="hud" class="hidden flex justify-between items-start w-full max-w-4xl mx-auto interactive">
+            <div class="glass-panel px-4 py-2 flex items-center gap-3">
+                <div class="text-3xl">🐘</div>
+                <div>
+                    <div class="text-sm text-gray-500 leading-none">คะแนน</div>
+                    <div id="score-display" class="text-2xl font-bold text-blue-600 leading-none mt-1">0</div>
+                </div>
+            </div>
+            
+            <div class="glass-panel px-6 py-2 text-center bg-orange-100 border-orange-400 border-4">
+                <div class="text-sm text-orange-600 font-bold">เวลา</div>
+                <div id="timer-display" class="text-4xl font-black text-red-500">60</div>
+            </div>
+            
+            <div class="glass-panel px-4 py-2 flex items-center gap-2">
+                <div class="text-sm text-gray-500">ด่าน</div>
+                <div id="level-display" class="text-2xl font-bold text-green-600">1</div>
+            </div>
+        </div>
+
+        <div id="start-screen" class="interactive absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
+            <div class="glass-panel p-8 max-w-md w-full text-center mx-4">
+                <div class="text-6xl mb-4">🐘🔍</div>
+                <h1 class="text-3xl font-bold text-blue-800 mb-2">AR ล่าคำศัพท์ แม่กง</h1>
+                <p class="text-lg text-gray-700 mb-6">แตะฟองสบู่คำที่สะกดด้วย <b>"ง"</b> ให้ทันเวลา!</p>
+                <div class="bg-blue-50 rounded-xl p-4 mb-6 text-sm text-left">
+                    <p class="font-bold text-blue-800 mb-2">วิธีเล่น:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>แตะที่ฟองสบู่คำที่สะกดด้วย <b class="text-red-500">ง</b> เท่านั้น (ได้ +10)</li>
+                        <li>ระวัง! คำหลอก (เช่น นก, แมว) จะโดนหักคะแนน (-5)</li>
+                    </ul>
+                </div>
+                <button id="start-btn" class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-2xl py-4 rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-transform border-4 border-white">
+                    ▶️ เริ่มเล่นเลย!
+                </button>
+            </div>
+        </div>
+
+        <div id="end-screen" class="interactive absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md z-50 hidden">
+            <div class="glass-panel p-8 max-w-md w-full text-center mx-4">
+                <h2 class="text-4xl font-bold text-yellow-500 mb-4">หมดเวลา! 🎉</h2>
+                <div class="text-6xl mb-2">🏆</div>
+                <p class="text-xl text-gray-700 mb-1">คะแนนของคุณ</p>
+                <div id="final-score" class="text-6xl font-black text-blue-600 mb-4">0</div>
+                
+                <div class="bg-gray-50 rounded-xl p-4 mb-6 text-sm text-left h-32 overflow-y-auto">
+                    <p class="font-bold text-gray-800 mb-2">คำศัพท์แม่กงที่คุณหาเจอ:</p>
+                    <div id="collected-words" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <button id="restart-btn" class="w-full bg-gradient-to-r from-pink-400 to-orange-400 text-white font-bold text-xl py-3 rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-transform border-4 border-white">
+                    🔄 เล่นอีกครั้ง
+                </button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const audioEngine = {
+            isReady: false,
+            bgm: null,
+            synths: {},
+            
+            async init() {
+                if (this.isReady) return;
+                try {
+                    await Tone.start();
+                    this.synths.correct = new Tone.PolySynth(Tone.Synth).toDestination();
+                    this.synths.correct.volume.value = -5;
+                    
+                    this.synths.wrong = new Tone.Synth({
+                        oscillator: { type: "sawtooth" },
+                        envelope: { attack: 0.01, decay: 0.1, sustain: 0, release: 0.2 }
+                    }).toDestination();
+                    this.synths.wrong.volume.value = -10;
+
+                    const melody = [ ["C4", "E4", "G4", "C5"], [null, "G4", null, "E4"], ["F4", "A4", "C5", "F5"], [null, "C5", null, "A4"] ];
+                    const bgmSynth = new Tone.PolySynth(Tone.Synth).toDestination();
+                    bgmSynth.volume.value = -15;
+
+                    let step = 0;
+                    this.bgm = new Tone.Loop((time) => {
+                        const chord = melody[step % melody.length];
+                        if (chord && chord[0] !== null) {
+                            bgmSynth.triggerAttackRelease(chord.filter(c=>c), "8n", time);
+                        }
+                        step++;
+                    }, "4n");
+                    
+                    Tone.Transport.bpm.value = 120;
+                    this.isReady = true;
+                } catch (e) {
+                    console.log("Audio API not supported or blocked, playing without sound.", e);
+                }
+            },
+
+            playCorrect() { if(this.isReady) this.synths.correct.triggerAttackRelease(["C5", "E5", "G5"], "16n"); },
+            playWrong() { if(this.isReady) this.synths.wrong.triggerAttackRelease("D3", "8n"); },
+            playLevelUp() { if(this.isReady) this.synths.correct.triggerAttackRelease(["C5", "F5", "A5", "C6"], "8n"); },
+            startBGM() { if(this.isReady) { Tone.Transport.start(); this.bgm.start(0); } },
+            stopBGM() { if(this.isReady) { Tone.Transport.stop(); this.bgm.stop(); } }
+        };
+
+        const GAME_WORDS = {
+            correct: ["ช้าง", "ลิง", "กางเกง", "เตียง", "กล้อง", "กุ้ง", "แมลง", "ร้องเพลง", "แกง", "ทอง", "ธง", "ยาง", "เมือง", "แตงโม", "เสียง", "แข็งแรง", "กล่อง", "กระโปรง", "ห่วง", "สอง"],
+            wrong: ["นก", "แมว", "เป็ด", "งู", "กบ", "หมา", "หมู", "บ้าน", "ดาว", "น้ำ", "ข้าว", "เสือ", "ปู", "ไก่", "ปลา", "หมี", "จาน", "ยาย", "ช้อน", "สวย"]
+        };
+
+        const game = {
+            state: 'start', 
+            score: 0,
+            timeLeft: 60,
+            level: 1,
+            timerInterval: null,
+            spawnInterval: null,
+            bubbles: [],
+            collectedWords: new Set(),
+            animationFrameId: null,
+            
+            config: {
+                level1: { spawnRate: 1500, fallSpeed: 3, bgColors: ['#FF9A9E', '#FECFEF'] },
+                level2: { spawnRate: 1000, fallSpeed: 5, bgColors: ['#a1c4fd', '#c2e9fb'] },
+                level3: { spawnRate: 700, fallSpeed: 7, bgColors: ['#fbc2eb', '#a6c1ee'] }
+            },
+
+            els: {
+                startScreen: document.getElementById('start-screen'),
+                endScreen: document.getElementById('end-screen'),
+                hud: document.getElementById('hud'),
+                scoreDisplay: document.getElementById('score-display'),
+                timerDisplay: document.getElementById('timer-display'),
+                levelDisplay: document.getElementById('level-display'),
+                container: document.getElementById('game-container'),
+                finalScore: document.getElementById('final-score'),
+                collectedWords: document.getElementById('collected-words'),
+                cameraLayer: document.getElementById('camera-layer')
+            },
+
+            async initCamera() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                    this.els.cameraLayer.srcObject = stream;
+                } catch (err) {
+                    console.log("Camera access denied. Using fallback background.");
+                    this.els.cameraLayer.style.display = 'none';
+                    document.body.classList.add('bg-fallback');
+                }
+            },
+
+            startGame() {
+                this.state = 'playing';
+                this.score = 0;
+                this.timeLeft = 60;
+                this.level = 1;
+                this.collectedWords.clear();
+                
+                this.updateHUD();
+                
+                this.els.startScreen.classList.add('hidden');
+                this.els.endScreen.classList.add('hidden');
+                this.els.hud.classList.remove('hidden');
+                
+                this.els.container.innerHTML = '';
+                this.bubbles = [];
+
+                audioEngine.startBGM();
+
+                clearInterval(this.timerInterval);
+                this.timerInterval = setInterval(() => this.tick(), 1000);
+                
+                this.startSpawning();
+                
+                if(this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
+                this.gameLoop();
+            },
+
+            endGame() {
+                this.state = 'end';
+                clearInterval(this.timerInterval);
+                clearInterval(this.spawnInterval);
+                if(this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
+                audioEngine.stopBGM();
+                
+                this.els.hud.classList.add('hidden');
+                this.els.endScreen.classList.remove('hidden');
+                
+                this.els.finalScore.innerText = this.score;
+                
+                this.els.collectedWords.innerHTML = Array.from(this.collectedWords).map(w => 
+                    `<span class="px-2 py-1 bg-green-100 text-green-800 border border-green-300 rounded-lg text-sm m-1 inline-block">${w}</span>`
+                ).join('') || '<span class="text-gray-400">ยังไม่เจอคำศัพท์เลย พยายามใหม่นะ!</span>';
+            },
+
+            tick() {
+                if (this.timeLeft <= 0) {
+                    this.endGame();
+                    return;
+                }
+                
+                this.timeLeft--;
+                
+                let newLevel = 1;
+                if (this.timeLeft <= 40 && this.timeLeft > 20) newLevel = 2;
+                if (this.timeLeft <= 20) newLevel = 3;
+                
+                if (newLevel !== this.level) {
+                    this.level = newLevel;
+                    audioEngine.playLevelUp();
+                    this.startSpawning(); 
+                    this.showScreenMessage(`เข้าสู่ด่านที่ ${this.level}!`);
+                }
+                this.updateHUD();
+            },
+
+            updateHUD() {
+                this.els.scoreDisplay.innerText = this.score;
+                this.els.timerDisplay.innerText = this.timeLeft;
+                this.els.levelDisplay.innerText = this.level;
+                
+                if(this.timeLeft <= 10) this.els.timerDisplay.classList.add('animate-pulse');
+                else this.els.timerDisplay.classList.remove('animate-pulse');
+            },
+
+            startSpawning() {
+                clearInterval(this.spawnInterval);
+                const conf = this.config[`level${this.level}`];
+                
+                // สุ่มฟองแรกทันทีเมื่อเริ่ม
+                this.spawnBubble(); 
+
+                this.spawnInterval = setInterval(() => {
+                    if (this.state === 'playing') this.spawnBubble();
+                }, conf.spawnRate);
+            },
+
+            spawnBubble() {
+                const isCorrect = Math.random() > 0.4; 
+                const wordList = isCorrect ? GAME_WORDS.correct : GAME_WORDS.wrong;
+                const word = wordList[Math.floor(Math.random() * wordList.length)];
+                
+                const size = Math.random() * 40 + 80; 
+                const startX = Math.random() * (window.innerWidth - size);
+                
+                const colors = this.config[`level${this.level}`].bgColors;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble bg-white/80 backdrop-blur-md border-4 border-white';
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${startX}px`;
+                bubble.style.top = `0px`; /* แก้ไขจุดเริ่มต้น */
+                bubble.style.fontSize = `${size * 0.25}px`;
+                bubble.style.color = '#333';
+                bubble.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+                bubble.innerText = word;
+                
+                const bubbleObj = {
+                    el: bubble,
+                    y: -150, /* ขยับให้อยู่เหนือขอบจอก่อนตกลงมา */
+                    speed: this.config[`level${this.level}`].fallSpeed + (Math.random() * 2),
+                    isCorrect: isCorrect,
+                    word: word,
+                    active: true
+                };
+
+                // ใช้ทั้ง pointerdown และ touchstart เพื่อรองรับมือถือได้ดีขึ้น
+                const handleTap = (e) => {
+                    e.preventDefault();
+                    if(!bubbleObj.active) return;
+                    let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                    let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+                    this.handleBubbleTap(bubbleObj, clientX, clientY);
+                };
+
+                bubble.addEventListener('pointerdown', handleTap);
+                bubble.addEventListener('touchstart', handleTap, {passive: false});
+
+                this.els.container.appendChild(bubble);
+                this.bubbles.push(bubbleObj);
+            },
+
+            handleBubbleTap(b, x, y) {
+                b.active = false;
+                
+                if (b.isCorrect) {
+                    this.score += 10;
+                    audioEngine.playCorrect();
+                    this.showPopEffect(x, y, '+10', 'text-green-500');
+                    this.collectedWords.add(b.word);
+                } else {
+                    this.score = Math.max(0, this.score - 5);
+                    audioEngine.playWrong();
+                    this.showPopEffect(x, y, '-5', 'text-red-500');
+                }
+                
+                this.updateHUD();
+                b.el.classList.add('bubble-burst');
+                setTimeout(() => {
+                    if (b.el.parentNode) b.el.parentNode.removeChild(b.el);
+                }, 200);
+            },
+
+            showPopEffect(x, y, text, colorClass) {
+                const pop = document.createElement('div');
+                pop.className = `pop-effect ${colorClass}`;
+                pop.style.left = `${x - 30}px`;
+                pop.style.top = `${y - 30}px`;
+                pop.innerText = text;
+                this.els.container.appendChild(pop);
+                setTimeout(() => {
+                    if(pop.parentNode) pop.parentNode.removeChild(pop);
+                }, 800);
+            },
+
+            showScreenMessage(text) {
+                const msg = document.createElement('div');
+                msg.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl font-black text-white z-50 pointer-events-none animate-bounce';
+                msg.style.textShadow = "3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000";
+                msg.innerText = text;
+                document.body.appendChild(msg);
+                setTimeout(() => {
+                    if(msg.parentNode) msg.parentNode.removeChild(msg);
+                }, 1500);
+            },
+
+            gameLoop() {
+                if (this.state !== 'playing') return;
+
+                const screenHeight = window.innerHeight;
+
+                for (let i = this.bubbles.length - 1; i >= 0; i--) {
+                    let b = this.bubbles[i];
+                    if (!b.active) continue;
+
+                    b.y += b.speed;
+                    b.el.style.transform = `translateY(${b.y}px)`;
+
+                    if (b.y > screenHeight + 50) {
+                        if (b.el.parentNode) b.el.parentNode.removeChild(b.el);
+                        this.bubbles.splice(i, 1);
+                    }
+                }
+
+                this.animationFrameId = requestAnimationFrame(() => this.gameLoop());
+            }
+        };
+
+        // ใช้ try-catch ป้องกันโค้ดหยุดทำงานหากผู้ใช้ไม่ให้สิทธิ์กล้องหรือเสียง
+        document.getElementById('start-btn').addEventListener('click', async () => {
+            try { await audioEngine.init(); } catch(e) { console.warn("Audio skipped"); }
+            try { await game.initCamera(); } catch(e) { console.warn("Camera skipped"); }
+            game.startGame();
+        });
+
+        document.getElementById('restart-btn').addEventListener('click', () => {
+            game.startGame();
+        });
+
+    </script>
+</body>
+</html>

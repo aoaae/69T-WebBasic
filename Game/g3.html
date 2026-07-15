@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>วิถีแห่งพู่กันมนตรา (Magic Brush AR)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MediaPipe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Mali', cursive;
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a0b2e; /* Dark magic background */
+            color: white;
+            user-select: none;
+        }
+        
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Video and Canvas Layers */
+        video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1); /* Mirror effect */
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Note: We mirror the drawing in JS, not CSS, to keep coordinates accurate */
+        }
+
+        #guide-canvas { z-index: 2; }
+        #draw-canvas { z-index: 3; }
+        #fx-canvas { z-index: 4; }
+
+        /* UI Overlays */
+        .ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none; /* Let clicks pass through to canvas for fallback */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .interactive {
+            pointer-events: auto;
+        }
+
+        /* Screens */
+        .screen {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 11, 46, 0.9);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            position: absolute;
+            pointer-events: auto;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        /* Magic Buttons */
+        .magic-btn {
+            background: linear-gradient(135deg, #6b21a8, #3b82f6);
+            border: 2px solid #fbbf24;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+            transition: all 0.2s;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .magic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.8);
+        }
+
+        .magic-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Progress Bars */
+        .bar-container {
+            width: 200px;
+            height: 24px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 12px;
+            border: 2px solid #fbbf24;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #power-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ec4899, #8b5cf6);
+            width: 100%;
+            transition: width 0.3s ease-out;
+        }
+
+        #timer-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        /* HUD Items */
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+
+        .hud-bottom {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+
+        .status-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 8px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 1)); }
+            100% { filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5)); }
+        }
+
+        .animate-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Loader */
+        .loader {
+            border: 8px solid #3b82f6;
+            border-top: 8px solid #fbbf24;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .star { color: #fbbf24; font-size: 3rem; text-shadow: 0 0 10px #fbbf24; }
+        .star.dim { color: #4b5563; text-shadow: none; }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <!-- Camera Feed -->
+    <video id="webcam" autoplay playsinline></video>
+    
+    <!-- Drawing Layers -->
+    <!-- Guide Canvas: Shows the dotted path -->
+    <canvas id="guide-canvas"></canvas>
+    <!-- Draw Canvas: Where the user draws -->
+    <canvas id="draw-canvas"></canvas>
+    <!-- FX Canvas: For particles and cursor -->
+    <canvas id="fx-canvas"></canvas>
+
+    <!-- Main UI Layer -->
+    <div class="ui-layer" id="main-ui" style="display: none;">
+        <div class="hud-top">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">✨ พลังเวท:</span>
+                    <div class="bar-container">
+                        <div id="power-bar"></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">⏱️ เวลา:</span>
+                    <div class="bar-container">
+                        <div id="timer-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-end gap-2 text-xl font-bold">
+                <div class="status-badge text-yellow-300">ด่าน: พยัญชนะ 'ฆ'</div>
+                <div id="score-display">คะแนน: 0</div>
+            </div>
+        </div>
+
+        <div class="hud-bottom">
+            <div id="gesture-status" class="status-badge text-2xl animate-glow interactive">
+                🔍 กำลังค้นหามือ...
+            </div>
+            <!-- Fallback controls message -->
+            <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                *ใช้เมาส์/ทัชสกรีนแทนได้หากไม่พบมือ
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREENS -->
+    
+    <!-- 1. Start Screen -->
+    <div id="screen-start" class="screen active">
+        <h1 class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-purple-400 mb-4 text-center animate-glow">
+            วิถีแห่งพู่กันมนตรา<br><span class="text-3xl text-white">Magic Brush AR</span>
+        </h1>
+        <p class="text-xl mb-8 text-center max-w-lg">
+            จอมเวทฝึกหัด! ใช้ปลายนิ้วชี้ของเธอเป็นพู่กันมนตรา<br>
+            วาดอักขระให้สมบูรณ์เพื่อสะสมพลังเวทมนตร์
+        </p>
+        <button id="btn-start" class="magic-btn">เปิดกล้องและเริ่มเกม</button>
+    </div>
+
+    <!-- 2. Loading AI Screen -->
+    <div id="screen-loading" class="screen">
+        <div class="loader mb-4"></div>
+        <h2 class="text-3xl font-bold text-yellow-300">กำลังร่ายเวทมนตร์...</h2>
+        <p class="text-lg mt-2">กำลังโหลดระบบตรวจจับมือ</p>
+    </div>
+
+    <!-- 3. Camera Error Screen -->
+    <div id="screen-cam-error" class="screen">
+        <div class="text-6xl mb-4">📷❌</div>
+        <h2 class="text-3xl font-bold text-red-400 mb-4">ไม่สามารถเปิดกล้องได้</h2>
+        <p class="text-lg mb-8 text-center max-w-md">
+            กรุณาอนุญาตให้เบราว์เซอร์ใช้งานกล้อง<br>เพื่อให้พู่กันมนตราทำงานได้
+        </p>
+        <button id="btn-retry-cam" class="magic-btn">ลองใหม่อีกครั้ง</button>
+    </div>
+
+    <!-- 4. Tutorial Screen -->
+    <div id="screen-tutorial" class="screen">
+        <h2 class="text-4xl font-bold text-yellow-300 mb-8">วิถีแห่งจอมเวท</h2>
+        
+        <div class="grid grid-cols-2 gap-8 max-w-4xl text-center mb-8">
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/20">
+                <div class="text-5xl mb-4">🤏</div>
+                <h3 class="text-2xl font-bold mb-2">จีบนิ้วเพื่อ "วาด"</h3>
+                <p>นำนิ้วโป้งและนิ้วชี้แตะกันเพื่อเริ่มวาดเส้นมนตรา</p>
+            </div>
+            <div class="bg-white/10 p-6 rounded-2xl border border-white/20">
+                <div class="text-5xl mb-4">🖐️</div>
+                <h3 class="text-2xl font-bold mb-2">แบมือเพื่อ "ลบ"</h3>
+                <p>เหยียดนิ้วทั้ง 5 ออกเพื่อเรียกยางลบเวทมนตร์</p>
+            </div>
+        </div>
+        
+        <button id="btn-start-level" class="magic-btn">เริ่มภารกิจ!</button>
+    </div>
+
+    <!-- 5. Game Over / Summary Screen -->
+    <div id="screen-summary" class="screen">
+        <h2 id="summary-title" class="text-5xl font-bold text-yellow-300 mb-4 animate-glow">สำเร็จ!</h2>
+        
+        <div id="stars-container" class="flex gap-4 mb-6">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star dim">★</span>
+        </div>
+
+        <div class="bg-white/10 p-6 rounded-2xl border border-white/20 text-xl text-center mb-8 w-80">
+            <p class="mb-2">คะแนนรวม: <span id="summary-score" class="font-bold text-yellow-300">0</span></p>
+            <p class="mb-2">ความแม่นยำ: <span id="summary-acc" class="font-bold text-green-300">0%</span></p>
+            <p>พลังที่เหลือ: <span id="summary-power" class="font-bold text-blue-300">0</span></p>
+        </div>
+        
+        <div class="flex gap-4">
+            <button id="btn-restart" class="magic-btn text-lg">ลองใหม่อีกครั้ง</button>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import {
+        HandLandmarker,
+        FilesetResolver
+    } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.js";
+
+    // --- System & State Variables ---
+    const GAME_STATE = {
+        START: 0,
+        LOADING: 1,
+        TUTORIAL: 2,
+        PLAYING: 3,
+        GAMEOVER: 4
+    };
+    
+    let currentState = GAME_STATE.START;
+    let handLandmarker = undefined;
+    let webcamRunning = false;
+    let lastVideoTime = -1;
+    let animationFrameId;
+
+    // --- Game Logic Variables ---
+    let power = 100;
+    let maxTime = 60; // seconds
+    let timeLeft = maxTime;
+    let score = 0;
+    let mistakes = 0;
+    let gameInterval;
+    let pathProgress = 0; // Index of the current target point
+
+    // --- Drawing & Gesture Variables ---
+    let isDrawing = false;
+    let isErasing = false;
+    let lastDrawPoint = null;
+    let cursorPosition = { x: -100, y: -100 }; // Hidden initially
+    
+    // Fallback Controls (Mouse/Touch)
+    let pointerDown = false;
+    let pointerPos = { x: 0, y: 0 };
+    let fallbackMode = false;
+
+    // --- DOM Elements ---
+    const video = document.getElementById('webcam');
+    
+    const guideCanvas = document.getElementById('guide-canvas');
+    const drawCanvas = document.getElementById('draw-canvas');
+    const fxCanvas = document.getElementById('fx-canvas');
+    
+    const guideCtx = guideCanvas.getContext('2d');
+    const drawCtx = drawCanvas.getContext('2d');
+    const fxCtx = fxCanvas.getContext('2d');
+
+    const screens = {
+        start: document.getElementById('screen-start'),
+        loading: document.getElementById('screen-loading'),
+        camError: document.getElementById('screen-cam-error'),
+        tutorial: document.getElementById('screen-tutorial'),
+        summary: document.getElementById('screen-summary')
+    };
+
+    const uiMain = document.getElementById('main-ui');
+    const powerBar = document.getElementById('power-bar');
+    const timerBar = document.getElementById('timer-bar');
+    const scoreDisplay = document.getElementById('score-display');
+    const gestureStatus = document.getElementById('gesture-status');
+
+    // --- The Letter "ฆ" Path Definition (Normalized 0.0 - 1.0) ---
+    // A simplified sequence of circles (waypoints) the user must pass through.
+    const letterPathData = [
+        // หัววงกลม (Head Loop)
+        { x: 0.30, y: 0.35, r: 0.04 }, { x: 0.28, y: 0.30, r: 0.04 }, 
+        { x: 0.32, y: 0.28, r: 0.04 }, { x: 0.35, y: 0.33, r: 0.04 },
+        // ลากลง (Down)
+        { x: 0.32, y: 0.45, r: 0.04 },
+        // หยักซ้าย (Zigzag left)
+        { x: 0.25, y: 0.50, r: 0.04 },
+        // หยักขวา ลง (Zigzag right down)
+        { x: 0.30, y: 0.65, r: 0.04 }, { x: 0.30, y: 0.80, r: 0.04 },
+        // ฐานล่าง (Bottom curve)
+        { x: 0.40, y: 0.85, r: 0.04 }, { x: 0.55, y: 0.85, r: 0.04 },
+        // ลากขึ้นกลาง (Up middle)
+        { x: 0.55, y: 0.60, r: 0.04 },
+        // ม้วนหลัง (Back loop)
+        { x: 0.50, y: 0.50, r: 0.04 }, { x: 0.60, y: 0.45, r: 0.04 },
+        // ฐานขวา (Right bottom)
+        { x: 0.65, y: 0.55, r: 0.04 }, { x: 0.75, y: 0.80, r: 0.04 },
+        // หางลากขึ้น (Tail straight up)
+        { x: 0.75, y: 0.60, r: 0.04 }, { x: 0.75, y: 0.40, r: 0.04 }, { x: 0.75, y: 0.20, r: 0.04 }
+    ];
+    let actualPath = []; // Will store pixel coordinates based on canvas size
+
+    // --- Initialization & Setup ---
+
+    function resizeCanvases() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        
+        [guideCanvas, drawCanvas, fxCanvas].forEach(c => {
+            c.width = w;
+            c.height = h;
+        });
+
+        // Recalculate path positions based on new size
+        actualPath = letterPathData.map(p => ({
+            x: p.x * w,
+            y: p.y * h,
+            r: p.r * Math.min(w, h), // Radius scales with screen
+            hit: false
+        }));
+
+        if (currentState === GAME_STATE.PLAYING || currentState === GAME_STATE.TUTORIAL) {
+            drawGuidePath();
+        }
+    }
+
+    window.addEventListener('resize', resizeCanvases);
+    resizeCanvases(); // Initial call
+
+    function switchScreen(screenKey) {
+        Object.values(screens).forEach(s => s.classList.remove('active'));
+        if (screenKey && screens[screenKey]) {
+            screens[screenKey].classList.add('active');
+        }
+        
+        if (screenKey === 'none') {
+            uiMain.style.display = 'flex';
+        } else {
+            uiMain.style.display = 'none';
+        }
+    }
+
+    // --- MediaPipe Loading ---
+    async function loadHandAI() {
+        switchScreen('loading');
+        try {
+            const vision = await FilesetResolver.forVisionTasks(
+                "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+            );
+            handLandmarker = await HandLandmarker.createFromOptions(vision, {
+                baseOptions: {
+                    modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
+                    delegate: "GPU"
+                },
+                runningMode: "VIDEO",
+                numHands: 1,
+                minHandDetectionConfidence: 0.5,
+                minHandPresenceConfidence: 0.5,
+                minTrackingConfidence: 0.5,
+            });
+            startCamera();
+        } catch (err) {
+            console.error("AI Load Error:", err);
+            alert("เกิดข้อผิดพลาดในการโหลดระบบ AI กรุณารีเฟรชหน้าเว็บ");
+        }
+    }
+
+    // --- Camera Setup ---
+    async function startCamera() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "user", width: 1280, height: 720 }
+            });
+            video.srcObject = stream;
+            video.addEventListener("loadeddata", () => {
+                webcamRunning = true;
+                switchScreen('tutorial');
+                predictWebcam(); // Start the AI loop
+            });
+        } catch (err) {
+            console.error("Camera Error:", err);
+            switchScreen('camError');
+        }
+    }
+
+    // --- Gesture Recognition Math ---
+    
+    // Check if thumb (4) and index (8) are close
+    function isPinchGesture(landmarks) {
+        const thumbTip = landmarks[4];
+        const indexTip = landmarks[8];
+        
+        // Calculate Euclidean distance
+        const dist = Math.hypot(thumbTip.x - indexTip.x, thumbTip.y - indexTip.y);
+        // Distance threshold (normalized 0-1). 0.05 is usually a good pinch.
+        return dist < 0.05; 
+    }
+
+    // Check if hand is open (all fingers extended)
+    function isOpenPalmGesture(landmarks) {
+        const wrist = landmarks[0];
+        // Finger tips: 8 (index), 12 (middle), 16 (ring), 20 (pinky)
+        // Lower joints (PIP): 6, 10, 14, 18
+        
+        let extendedFingers = 0;
+        const fingers = [
+            {tip: 8, pip: 6}, 
+            {tip: 12, pip: 10}, 
+            {tip: 16, pip: 14}, 
+            {tip: 20, pip: 18}
+        ];
+
+        fingers.forEach(f => {
+            const distTip = Math.hypot(landmarks[f.tip].x - wrist.x, landmarks[f.tip].y - wrist.y);
+            const distPip = Math.hypot(landmarks[f.pip].x - wrist.x, landmarks[f.pip].y - wrist.y);
+            if (distTip > distPip) {
+                extendedFingers++;
+            }
+        });
+
+        // Thumb is tricky, but if 4 fingers are clearly extended, it's an open palm
+        return extendedFingers >= 3; 
+    }
+
+    // --- Main AI Loop ---
+    async function predictWebcam() {
+        if (!webcamRunning) return;
+
+        let startTimeMs = performance.now();
+        if (lastVideoTime !== video.currentTime) {
+            lastVideoTime = video.currentTime;
+            
+            if (handLandmarker) {
+                const results = handLandmarker.detectForVideo(video, startTimeMs);
+                processHandResults(results);
+            }
+        }
+
+        // Draw FX layer (cursor, particles) every frame
+        drawFX();
+
+        animationFrameId = window.requestAnimationFrame(predictWebcam);
+    }
+
+    function processHandResults(results) {
+        if (currentState !== GAME_STATE.PLAYING && currentState !== GAME_STATE.TUTORIAL) return;
+
+        fallbackMode = false; // Disable fallback if hands are detected
+
+        if (results.landmarks && results.landmarks.length > 0) {
+            const landmarks = results.landmarks[0]; // Get first hand
+
+            // Extract Index Finger Tip (Landmark 8)
+            // Important: Video is mirrored via CSS, so we must mirror X coordinate in JS
+            const indexTip = landmarks[8];
+            cursorPosition.x = (1 - indexTip.x) * fxCanvas.width;
+            cursorPosition.y = indexTip.y * fxCanvas.height;
+
+            // Gesture Recognition
+            const pinch = isPinchGesture(landmarks);
+            const palm = isOpenPalmGesture(landmarks);
+
+            if (pinch) {
+                gestureStatus.innerHTML = "✨ พู่กันพร้อมวาด";
+                gestureStatus.className = "status-badge text-2xl text-blue-300 animate-glow";
+                isErasing = false;
+                if (!isDrawing) {
+                    startDrawing(cursorPosition.x, cursorPosition.y);
+                } else {
+                    continueDrawing(cursorPosition.x, cursorPosition.y);
+                }
+            } 
+            else if (palm && !pinch) {
+                gestureStatus.innerHTML = "🖐️ โหมดยางลบ";
+                gestureStatus.className = "status-badge text-2xl text-red-300";
+                isDrawing = false;
+                lastDrawPoint = null;
+                isErasing = true;
+                eraseAt(cursorPosition.x, cursorPosition.y);
+            } 
+            else {
+                gestureStatus.innerHTML = "👆 เลื่อนพู่กัน";
+                gestureStatus.className = "status-badge text-2xl text-white";
+                isDrawing = false;
+                isErasing = false;
+                lastDrawPoint = null;
+            }
+
+        } else {
+            // No hands found
+            gestureStatus.innerHTML = "❌ ไม่พบมือ";
+            gestureStatus.className = "status-badge text-2xl text-gray-400";
+            isDrawing = false;
+            isErasing = false;
+            lastDrawPoint = null;
+            cursorPosition = { x: -100, y: -100 };
+        }
+    }
+
+    // --- Fallback Controls (Mouse / Touch) ---
+    function enableFallback(x, y, isDown) {
+        if (!fallbackMode) fallbackMode = true;
+        cursorPosition.x = x;
+        cursorPosition.y = y;
+        
+        if (isDown) {
+            gestureStatus.innerHTML = "🖱️ กำลังวาด (เมาส์)";
+            isErasing = false;
+            if (!isDrawing) startDrawing(x, y);
+            else continueDrawing(x, y);
+        } else {
+            gestureStatus.innerHTML = "🖱️ ใช้เมาส์เลื่อน";
+            isDrawing = false;
+            lastDrawPoint = null;
+        }
+    }
+
+    // Add listeners to FX Canvas (Top layer)
+    fxCanvas.addEventListener('mousedown', (e) => { pointerDown = true; enableFallback(e.clientX, e.clientY, true); });
+    fxCanvas.addEventListener('mousemove', (e) => { if(fallbackMode) enableFallback(e.clientX, e.clientY, pointerDown); });
+    fxCanvas.addEventListener('mouseup', () => { pointerDown = false; enableFallback(cursorPosition.x, cursorPosition.y, false); });
+    
+    fxCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); pointerDown = true; enableFallback(e.touches[0].clientX, e.touches[0].clientY, true); }, {passive: false});
+    fxCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); if(fallbackMode) enableFallback(e.touches[0].clientX, e.touches[0].clientY, pointerDown); }, {passive: false});
+    fxCanvas.addEventListener('touchend', () => { pointerDown = false; enableFallback(cursorPosition.x, cursorPosition.y, false); });
+
+
+    // --- Drawing Mechanics ---
+
+    function startDrawing(x, y) {
+        isDrawing = true;
+        lastDrawPoint = { x, y };
+        
+        drawCtx.beginPath();
+        drawCtx.moveTo(x, y);
+        drawCtx.lineCap = 'round';
+        drawCtx.lineJoin = 'round';
+        drawCtx.lineWidth = 15;
+        drawCtx.strokeStyle = 'rgba(251, 191, 36, 0.8)'; // Gold color
+        drawCtx.shadowBlur = 15;
+        drawCtx.shadowColor = '#fbbf24';
+        drawCtx.lineTo(x, y);
+        drawCtx.stroke();
+
+        checkPathCollision(x, y);
+    }
+
+    function continueDrawing(x, y) {
+        if (!isDrawing || !lastDrawPoint) return;
+
+        drawCtx.beginPath();
+        drawCtx.moveTo(lastDrawPoint.x, lastDrawPoint.y);
+        drawCtx.lineTo(x, y);
+        drawCtx.stroke();
+        
+        lastDrawPoint = { x, y };
+        checkPathCollision(x, y);
+    }
+
+    function eraseAt(x, y) {
+        const eraserRadius = 40;
+        drawCtx.save();
+        drawCtx.globalCompositeOperation = 'destination-out';
+        drawCtx.beginPath();
+        drawCtx.arc(x, y, eraserRadius, 0, Math.PI * 2, false);
+        drawCtx.fill();
+        drawCtx.restore();
+    }
+
+    // --- Game Logic: Path Validation ---
+    
+    function drawGuidePath() {
+        guideCtx.clearRect(0, 0, guideCanvas.width, guideCanvas.height);
+        
+        // Draw dotted line connecting points
+        guideCtx.beginPath();
+        guideCtx.setLineDash([15, 15]);
+        guideCtx.lineCap = 'round';
+        guideCtx.lineWidth = 10;
+        guideCtx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        
+        if (actualPath.length > 0) {
+            guideCtx.moveTo(actualPath[0].x, actualPath[0].y);
+            for (let i = 1; i < actualPath.length; i++) {
+                guideCtx.lineTo(actualPath[i].x, actualPath[i].y);
+            }
+        }
+        guideCtx.stroke();
+        guideCtx.setLineDash([]);
+
+        // Draw Waypoints (Circles)
+        actualPath.forEach((p, index) => {
+            guideCtx.beginPath();
+            guideCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            
+            if (p.hit) {
+                guideCtx.fillStyle = 'rgba(52, 211, 153, 0.6)'; // Green if passed
+                guideCtx.shadowBlur = 10;
+                guideCtx.shadowColor = '#34d399';
+            } else if (index === pathProgress) {
+                guideCtx.fillStyle = 'rgba(251, 191, 36, 0.6)'; // Gold/Yellow for next target
+                guideCtx.shadowBlur = 15;
+                guideCtx.shadowColor = '#fbbf24';
+            } else {
+                guideCtx.fillStyle = 'rgba(255, 255, 255, 0.1)'; // Dim for future targets
+                guideCtx.shadowBlur = 0;
+            }
+            
+            guideCtx.fill();
+        });
+    }
+
+    function checkPathCollision(x, y) {
+        if (currentState !== GAME_STATE.PLAYING) return;
+        if (pathProgress >= actualPath.length) return; // Done
+
+        const target = actualPath[pathProgress];
+        const dist = Math.hypot(x - target.x, y - target.y);
+
+        if (dist <= target.r * 1.5) {
+            // Hit!
+            target.hit = true;
+            pathProgress++;
+            score += 100;
+            power = Math.min(100, power + 5);
+            updateUI();
+            drawGuidePath();
+
+            if (pathProgress >= actualPath.length) {
+                levelComplete();
+            }
+        } else {
+            // Check if drawing way off path
+            // Simple logic: if distance to current target is very high, penalize
+            if (dist > target.r * 4) {
+                power = Math.max(0, power - 0.5);
+                mistakes++;
+                updateUI();
+                if (power <= 0) {
+                    gameOver();
+                }
+            }
+        }
+    }
+
+    // --- Rendering FX Layer (Cursor) ---
+    function drawFX() {
+        fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+        
+        if (cursorPosition.x < 0) return; // Hidden
+
+        fxCtx.beginPath();
+        if (isErasing) {
+            // Eraser cursor
+            fxCtx.arc(cursorPosition.x, cursorPosition.y, 40, 0, Math.PI * 2);
+            fxCtx.fillStyle = 'rgba(239, 68, 68, 0.4)';
+            fxCtx.strokeStyle = 'rgba(239, 68, 68, 0.8)';
+            fxCtx.lineWidth = 3;
+            fxCtx.fill();
+            fxCtx.stroke();
+        } else {
+            // Brush cursor
+            fxCtx.arc(cursorPosition.x, cursorPosition.y, isDrawing ? 15 : 10, 0, Math.PI * 2);
+            fxCtx.fillStyle = isDrawing ? '#fbbf24' : '#60a5fa';
+            fxCtx.shadowBlur = 20;
+            fxCtx.shadowColor = isDrawing ? '#fbbf24' : '#60a5fa';
+            fxCtx.fill();
+        }
+    }
+
+    // --- Game Flow Methods ---
+
+    function startGame() {
+        currentState = GAME_STATE.PLAYING;
+        switchScreen('none');
+        
+        // Reset Stats
+        power = 100;
+        timeLeft = maxTime;
+        score = 0;
+        mistakes = 0;
+        pathProgress = 0;
+        
+        actualPath.forEach(p => p.hit = false);
+        drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+        
+        resizeCanvases(); // Ensures path coordinates are correct
+        drawGuidePath();
+        updateUI();
+
+        // Timer loop
+        if(gameInterval) clearInterval(gameInterval);
+        gameInterval = setInterval(() => {
+            if (currentState === GAME_STATE.PLAYING) {
+                timeLeft--;
+                updateUI();
+                if (timeLeft <= 0) gameOver();
+            }
+        }, 1000);
+    }
+
+    function updateUI() {
+        powerBar.style.width = `${power}%`;
+        
+        // Change power bar color if low
+        if(power < 30) powerBar.style.background = '#ef4444';
+        else powerBar.style.background = 'linear-gradient(90deg, #ec4899, #8b5cf6)';
+
+        const timePct = (timeLeft / maxTime) * 100;
+        timerBar.style.width = `${timePct}%`;
+        
+        scoreDisplay.innerText = `คะแนน: ${score}`;
+    }
+
+    function gameOver() {
+        currentState = GAME_STATE.GAMEOVER;
+        clearInterval(gameInterval);
+        
+        document.getElementById('summary-title').innerText = "พลังเวทมนตร์หมดแล้ว!";
+        document.getElementById('summary-title').className = "text-4xl font-bold text-red-400 mb-4";
+        showSummary(false);
+    }
+
+    function levelComplete() {
+        currentState = GAME_STATE.GAMEOVER;
+        clearInterval(gameInterval);
+        
+        document.getElementById('summary-title').innerText = "สร้างอักขระสำเร็จ!";
+        document.getElementById('summary-title').className = "text-5xl font-bold text-yellow-300 mb-4 animate-glow";
+        showSummary(true);
+    }
+
+    function showSummary(isWin) {
+        switchScreen('summary');
+        
+        // Calculate Accuracy based on mistakes (simple heuristic)
+        let acc = 100 - (mistakes * 2);
+        if (acc < 0) acc = 0;
+        if (!isWin) acc = Math.min(acc, 50);
+
+        // Calculate Stars
+        let stars = 0;
+        if (isWin) {
+            if (acc >= 90) stars = 3;
+            else if (acc >= 75) stars = 2;
+            else stars = 1;
+        }
+
+        const starsHtml = document.getElementById('stars-container');
+        starsHtml.innerHTML = '';
+        for(let i=0; i<3; i++) {
+            if(i < stars) starsHtml.innerHTML += `<span class="star">★</span>`;
+            else starsHtml.innerHTML += `<span class="star dim">★</span>`;
+        }
+
+        document.getElementById('summary-score').innerText = isWin ? score + (Math.floor(power)*10) : score;
+        document.getElementById('summary-acc').innerText = `${acc}%`;
+        document.getElementById('summary-power').innerText = Math.floor(power);
+    }
+
+    // --- Event Listeners for Buttons ---
+    document.getElementById('btn-start').addEventListener('click', loadHandAI);
+    document.getElementById('btn-retry-cam').addEventListener('click', startCamera);
+    document.getElementById('btn-start-level').addEventListener('click', startGame);
+    document.getElementById('btn-restart').addEventListener('click', startGame);
+
+</script>
+</body>
+</html>

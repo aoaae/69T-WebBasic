@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกปฏิบัติ: HTML Link และ Image</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/w05-link_img.css">
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Header -->
+        <header class="site-header">
+            <div class="brand">
+                <div class="brand-icon">🎓</div>
+
+                <div class="brand-text">
+                    <h2>เรียนรู้เว็บเบื้องต้น</h2>
+                    <p>Web Development Basics</p>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#">🏠 Home</a></li>
+                    <li><a href="#">T Heading</a></li>
+                    <li><a href="#">☷ Formatting</a></li>
+                    <li><a href="#" class="active">🔗 Links & Images</a></li>
+                    <li><a href="#">📝 Practice</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Layout -->
+        <main class="main-layout">
+
+            <!-- Left / Main Content -->
+            <section class="content-area">
+
+                <!-- Hero -->
+                <section class="hero-section">
+                    <div class="hero-text">
+                        <h1>แบบฝึกปฏิบัติ: HTML Link และ Image</h1>
+                        <p>
+                            เรียนรู้การสร้างลิงก์และการแทรกรูปภาพด้วยแท็ก HTML
+                            <br>
+                            พร้อมตัวอย่างและการตกแต่งด้วย CSS
+                        </p>
+                    </div>
+
+                    <div class="hero-illustration">
+                        <div class="browser-window">
+                            <div class="browser-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+
+                            <div class="hero-icons">
+                                <div class="big-link">🔗</div>
+
+                                <div class="image-icon">
+                                    <div class="sun"></div>
+                                    <div class="mountain mountain-one"></div>
+                                    <div class="mountain mountain-two"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Link Examples -->
+                <article class="card link-card">
+                    <div class="section-title">
+                        <span class="section-icon">🔗</span>
+                        <h2>ตัวอย่างลิงก์ (Link Examples)</h2>
+                    </div>
+
+                    <div class="example-grid">
+
+                        <!-- Result Panel -->
+                        <div class="result-panel">
+                            <div class="panel-title">ผลลัพธ์</div>
+
+                            <div class="link-result">
+                                <a href="https://www.npru.ac.th">
+                                    ไปยังเว็บไซต์มหาวิทยาลัย
+                                </a>
+
+                                <a href="https://www.google.com" target="_blank">
+                                    เปิด Google ในแท็บใหม่ <span class="external-icon">↗</span>
+                                </a>
+
+                                <a href="mailto:teacher@example.com" class="mail-link">
+                                    <span class="mail-icon">✉</span>
+                                    ส่งอีเมลถึงผู้สอน
+                                </a>
+
+                                <a href="index.html" class="back-button">
+                                    ← กลับไปหน้าแรก
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Code Panel -->
+                        <div class="code-panel">
+                            <div class="panel-title">โค้ด HTML</div>
+
+<pre><code><span class="line-no">1</span> <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://www.npru.ac.th"</span><span class="tag">&gt;</span>เว็บไซต์มหาวิทยาลัย<span class="tag">&lt;/a&gt;</span>
+<span class="line-no">2</span> <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://www.google.com"</span> <span class="attr">target</span>=<span class="value">"_blank"</span><span class="tag">&gt;</span>
+     เปิด Google<span class="tag">&lt;/a&gt;</span>
+<span class="line-no">3</span> <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"mailto:teacher@example.com"</span><span class="tag">&gt;</span>ส่งอีเมล<span class="tag">&lt;/a&gt;</span>
+<span class="line-no">4</span> <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"index.html"</span><span class="tag">&gt;</span>กลับหน้าแรก<span class="tag">&lt;/a&gt;</span></code></pre>
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- Image Examples -->
+                <article class="card image-card">
+                    <div class="section-title">
+                        <span class="section-icon">🖼</span>
+                        <h2>ตัวอย่างรูปภาพ (Image Examples)</h2>
+                    </div>
+
+                    <div class="example-grid">
+
+                        <!-- Result Panel -->
+                        <div class="result-panel">
+                            <div class="panel-title">ผลลัพธ์</div>
+
+                            <div class="image-gallery">
+                                <figure>
+                                    <img src="images/campus.jpg" alt="ภาพมหาวิทยาลัย">
+                                    <figcaption>ภาพมหาวิทยาลัย</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <img src="images/student.jpg" alt="นักศึกษากำลังเรียน">
+                                    <figcaption>นักศึกษากำลังเรียน</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <img src="images/logo.png" alt="โลโก้วิชา">
+                                    <figcaption>โลโก้วิชา</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <!-- Code Panel -->
+                        <div class="code-panel">
+                            <div class="panel-title">โค้ด HTML</div>
+
+<pre><code><span class="line-no">1</span> <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"images/campus.jpg"</span> <span class="attr">alt</span>=<span class="value">"ภาพมหาวิทยาลัย"</span>
+     <span class="attr">width</span>=<span class="value">"220"</span><span class="tag">&gt;</span>
+<span class="line-no">2</span> <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"images/student.jpg"</span> <span class="attr">alt</span>=<span class="value">"นักศึกษากำลังเรียน"</span>
+     <span class="attr">width</span>=<span class="value">"180"</span><span class="tag">&gt;</span>
+<span class="line-no">3</span> <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"images/logo.png"</span> <span class="attr">alt</span>=<span class="value">"โลโก้วิชา"</span>
+     <span class="attr">height</span>=<span class="value">"80"</span><span class="tag">&gt;</span></code></pre>
+                        </div>
+
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
+
+                <!-- Objective -->
+                <section class="side-card">
+                    <div class="side-title">
+                        <span>🎯</span>
+                        <h3>จุดประสงค์การเรียนรู้</h3>
+                    </div>
+
+                    <ol class="objective-list">
+                        <li>
+                            <span>1</span>
+                            <p>อธิบายการใช้งานแท็ก &lt;a&gt; เพื่อสร้างลิงก์ไปยังหน้าเว็บหรือแหล่งต่าง ๆ</p>
+                        </li>
+
+                        <li>
+                            <span>2</span>
+                            <p>แทรกรูปภาพด้วยแท็ก &lt;img&gt; พร้อมกำหนดคุณสมบัติพื้นฐาน</p>
+                        </li>
+
+                        <li>
+                            <span>3</span>
+                            <p>ตกแต่งลิงก์และรูปภาพด้วย CSS เพื่อความสวยงามและน่าใช้งาน</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- Tag Menu -->
+                <section class="side-card">
+                    <div class="side-title">
+                        <span>🏷</span>
+                        <h3>แท็กที่ใช้บ่อย</h3>
+                    </div>
+
+                    <div class="tag-menu">
+                        <span>&lt;a&gt;</span>
+                        <span>href</span>
+                        <span>target</span>
+                        <span>&lt;img&gt;</span>
+                        <span>src</span>
+                        <span>alt</span>
+                        <span>width</span>
+                        <span>height</span>
+                    </div>
+                </section>
+
+                <!-- Activity -->
+                <section class="side-card">
+                    <div class="side-title">
+                        <span>📋</span>
+                        <h3>กิจกรรมฝึกปฏิบัติ</h3>
+                    </div>
+
+                    <ul class="activity-list">
+                        <li><span class="circle blue">1</span> สร้างลิงก์อย่างน้อย 3 แบบ</li>
+                        <li><span class="circle green">2</span> แทรกรูปภาพอย่างน้อย 2 รูป</li>
+                        <li><span class="circle orange">3</span> ใส่ alt ให้กับรูปภาพทุกภาพ</li>
+                        <li><span class="circle purple">4</span> ใส่ CSS เปลี่ยนสีลิงก์เมื่อ hover</li>
+                        <li><span class="circle pink">5</span> ตกแต่งรูปภาพด้วย border-radius หรือ box-shadow</li>
+                        <li><span class="circle teal">6</span> บันทึกไฟล์ชื่อ “link-image.html”</li>
+                    </ul>
+                </section>
+
+                <!-- Submit -->
+                <section class="submit-card">
+                    <div class="submit-icon">✈</div>
+
+                    <div>
+                        <h3>สิ่งที่ต้องส่ง</h3>
+                        <p>ส่งไฟล์ HTML พร้อมไฟล์และรูปภาพ</p>
+                    </div>
+                </section>
+
+            </aside>
+
+        </main>
+
+        <!-- Tip Box -->
+        <section class="tip-box">
+            <div class="tip-icon">i</div>
+
+            <div class="tip-content">
+                <h2>เกร็ดความรู้</h2>
+
+                <p>
+                    แท็ก <span>&lt;a&gt;</span> ใช้สำหรับสร้างลิงก์ (Hyperlink)
+                    เพื่อเชื่อมโยงไปยังหน้าเว็บ ไฟล์ หรือที่อยู่อีเมลต่าง ๆ
+                    โดยใช้แอตทริบิวต์ <span>href</span> ระบุปลายทางของลิงก์
+                    แท็ก <span>&lt;img&gt;</span> ใช้สำหรับแทรกรูปภาพ
+                    โดยใช้แอตทริบิวต์ <span>src</span> ระบุแหล่งที่อยู่ของไฟล์รูปภาพ
+                    และ <span>alt</span> ระบุข้อความอธิบายรูปภาพ ซึ่งสำคัญต่อการเข้าถึงได้
+                    (Accessibility) และช่วยแสดงข้อความเมื่อไม่สามารถโหลดรูปได้
+                    • CSS สามารถใช้ตกแต่งลิงก์ด้วย <span>link color</span>,
+                    เอฟเฟกต์เมื่อ <span>hover</span>, ขนาดของรูปภาพ, ขอบ
+                    (<span>border</span>), มุมโค้ง (<span>border-radius</span>)
+                    และเงา (<span>box-shadow</span>)
+                    เพื่อให้หน้าเว็บสวยงามและน่าใช้งานมากยิ่งขึ้น
+                </p>
+            </div>
+
+            <div class="tip-illustration">
+                <div class="bulb">💡</div>
+                <div class="books">📚</div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
